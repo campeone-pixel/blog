@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from blogapp.models import *
 
-def home(request):
-  return render(request,'home.html')
+def inicio(request):
+  posts = Post.objects.all()
+  return render(request,'home.html',{'posts':posts})
