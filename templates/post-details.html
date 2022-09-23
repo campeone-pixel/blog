@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<section class="section">
+	<div class="container">
+		<article class="row mb-4">
+			<div class="col-lg-10 mx-auto mb-4">
+				<h1 class="h2 mb-3">{{ articulo.titulo }}</h1>
+				<ul class="list-inline post-meta mb-3">
+					<li class="list-inline-item"><i class="ti-user mr-2"></i><a href="author.html">{{ articulos.escritor }}</a>
+					</li>
+					<li class="list-inline-item">{{ articulo.fecha_creacion }}</li>
+					<li class="list-inline-item">Categories :  <a href="#!" class="ml-1">{{ articulo.categoria }} </a>
+					</li>
+					<li class="list-inline-item">Tags : 
+						{% for tag in articulo.tag.all %}
+						<a href="#!" class="ml-1"> {{  tag }} </a> 
+						{% endfor %}
+					</li>
+				</ul>
+			</div>
+			<div class="col-12 mb-3">
+				<div class="post-slider">
+					<img src="{{ articulo.imagen_post.url }}" class="img-fluid" alt="post-thumb">
+				</div>
+			</div>
+			<div class="col-lg-10 mx-auto">
+				<div class="content">
+					<p>{{ articulo.content|safe }}</p>
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+
+{% endblock %}
+

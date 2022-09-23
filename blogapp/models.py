@@ -30,8 +30,8 @@ class Tag(Base):
   slug = models.SlugField()
   descripcion = RichTextField()
 
-  def __str__(self) -> str:
-    return super().__str__()
+  def __str__(self):
+    return self.nombre
 
 class Escritor(Base):
   nombre = models.CharField(max_length=100)
@@ -47,6 +47,9 @@ class Escritor(Base):
     verbose_name = 'escritor'
     verbose_name_plural = 'escritores'
 
+  def __str__(self):
+    return self.nombre + " " + self.apellido
+
 
 class Post(Base):
   titulo = models.CharField(max_length=50,unique=True)
@@ -58,8 +61,8 @@ class Post(Base):
   fecha_creacion = models.DateField(auto_now=True)
   escritor =models.ForeignKey(Escritor,on_delete=models.CASCADE)
   categoria = models.ForeignKey(Category,on_delete=models.CASCADE)
-  tag = models.ManyToManyField(Tag,null=True,blank=True)
-  me_gusta = models.ManyToManyField(User,related_name='blogpost_me_gusta',null=True,blank=True)
+  tag = models.ManyToManyField(to=Tag, related_name="posts", blank=True)
+  me_gusta = models.ManyToManyField(User,related_name='blogpost_me_gusta')
 
   def __str__(self):
     return self.titulo
