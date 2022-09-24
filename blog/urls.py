@@ -23,5 +23,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blogapp/',include('blogapp.urls')),
     path('',inicio,name='inicio'),
-    path('ver_articulo/<slug>/',ver_articulo,name='ver_articulo')
+    path('ver_articulo/<slug>/',ver_articulo,name='ver_articulo'),
+    path('articulos_por_categoria/<nombre>/',articulos_por_categoria,name='articulos_por_categoria'),
+    path('articulos_por_tag/<nombre>/',articulos_por_tag,name='articulos_por_tag'),
+    path('articulos_buscados/',articulos_buscados,name='articulos_buscados'),
+
+
+
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

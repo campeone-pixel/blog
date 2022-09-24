@@ -5,6 +5,8 @@
 		<div class="row">
 			<div class="col-lg-8  mb-5 mb-lg-0">
 
+
+				{% if posts %}
 				{% for articulo in posts %}
 				<article class="row mb-5">
 					<div class="col-12">
@@ -34,6 +36,115 @@
 					</div>
 				</article>
             {% endfor %}
+						{% endif %}
+
+						{% if articulos_buscados %}
+						{% for articulo in articulos_buscados %}
+						<article class="row mb-5">
+							<div class="col-12">
+								<div class="post-slider">
+									<img loading="lazy" src="{{ articulo.imagen_post.url }}" class="img-fluid" alt="post-thumb">
+									
+								</div>
+							</div>
+							<div class="col-12 mx-auto">
+								<h3><a class="post-title" href="{% url 'ver_articulo' articulo.slug  %}">{{ articulo.titulo }}</a></h3>
+								<ul class="list-inline post-meta mb-4">
+									<li class="list-inline-item"><i class="ti-user mr-2"></i>
+										<a href="#">{{ articulo.fecha_creacion }}</a>
+									</li>
+									<li class="list-inline-item">{{ articulo.escritor }}</li>
+									<li class="list-inline-item">Categories : <a href="#!" class="ml-1">{{ articulo.categoria }}</a>
+									</li>
+									<li class="list-inline-item">Tags : 
+														{% for tag in articulo.tag.all %}
+														<a href="#!" class="ml-1"> {{  tag }} </a> 
+														{% endfor %}
+									</li>
+								</ul>
+								<p>{{ articulo.content|striptags|safe|slice:300 }} ...</p> 
+		
+											<a href="{% url 'ver_articulo' articulo.slug  %}" class="btn btn-outline-primary">Continuar leyendo</a>
+							</div>
+						</article>
+								{% endfor %}
+								{% endif %}
+
+								{% if articulos_por_categoria %}
+								{% for articulo in articulos_por_categoria %}
+								<article class="row mb-5">
+									<div class="col-12">
+										<div class="post-slider">
+											<img loading="lazy" src="{{ articulo.imagen_post.url }}" class="img-fluid" alt="post-thumb">
+											
+										</div>
+									</div>
+									<div class="col-12 mx-auto">
+										<h3><a class="post-title" href="{% url 'ver_articulo' articulo.slug  %}">{{ articulo.titulo }}</a></h3>
+										<ul class="list-inline post-meta mb-4">
+											<li class="list-inline-item"><i class="ti-user mr-2"></i>
+												<a href="#">{{ articulo.fecha_creacion }}</a>
+											</li>
+											<li class="list-inline-item">{{ articulo.escritor }}</li>
+											<li class="list-inline-item">Categories : <a href="#!" class="ml-1">{{ articulo.categoria }}</a>
+											</li>
+											<li class="list-inline-item">Tags : 
+																{% for tag in articulo.tag.all %}
+																<a href="#!" class="ml-1"> {{  tag }} </a> 
+																{% endfor %}
+											</li>
+										</ul>
+										<p>{{ articulo.content|striptags|safe|slice:300 }} ...</p> 
+				
+													<a href="{% url 'ver_articulo' articulo.slug  %}" class="btn btn-outline-primary">Continuar leyendo</a>
+									</div>
+								</article>
+										{% endfor %}
+										{% endif %}
+										
+										{% if articulos_por_tag %}
+										{% for articulo in articulos_por_tag %}
+										<article class="row mb-5">
+											<div class="col-12">
+												<div class="post-slider">
+													<img loading="lazy" src="{{ articulo.imagen_post.url }}" class="img-fluid" alt="post-thumb">
+													
+												</div>
+											</div>
+											<div class="col-12 mx-auto">
+												<h3><a class="post-title" href="{% url 'ver_articulo' articulo.slug  %}">{{ articulo.titulo }}</a></h3>
+												<ul class="list-inline post-meta mb-4">
+													<li class="list-inline-item"><i class="ti-user mr-2"></i>
+														<a href="#">{{ articulo.fecha_creacion }}</a>
+													</li>
+													<li class="list-inline-item">{{ articulo.escritor }}</li>
+													<li class="list-inline-item">Categories : <a href="#!" class="ml-1">{{ articulo.categoria }}</a>
+													</li>
+													<li class="list-inline-item">Tags : 
+																		{% for tag in articulo.tag.all %}
+																		<a href="#!" class="ml-1"> {{  tag }} </a> 
+																		{% endfor %}
+													</li>
+												</ul>
+												<p>{{ articulo.content|striptags|safe|slice:300 }} ...</p> 
+						
+															<a href="{% url 'ver_articulo' articulo.slug  %}" class="btn btn-outline-primary">Continuar leyendo</a>
+											</div>
+										</article>
+												{% endfor %}
+												{% endif %}
+
+				{% if message %}
+				
+				<article class="row mb-5">
+					
+					<div class="col-12 mx-auto">
+						<h3><a class="post-title" href="#">{{ message }}</a></h3>
+					</div>
+				</article>
+        
+				{% endif %}
+						
 				
 			</div>
 			<aside class="col-lg-4">
