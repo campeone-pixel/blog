@@ -8,13 +8,15 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('blogapp', '0003_delete_blogcategory_delete_blogcomment_and_more'),
+        ("blogapp", "0003_delete_blogcategory_delete_blogcomment_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='post',
-            name='me_gusta',
-            field=models.ManyToManyField(null=True, related_name='blogpost_me_gusta', to=settings.AUTH_USER_MODEL),
+            model_name="post",
+            name="me_gusta",
+            field=models.ManyToManyField(
+                null=True, related_name="blogpost_me_gusta", to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]

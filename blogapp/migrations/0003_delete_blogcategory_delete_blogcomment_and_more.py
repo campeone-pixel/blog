@@ -6,20 +6,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blogapp', '0002_category_escritor_tag_post_comment'),
+        ("blogapp", "0002_category_escritor_tag_post_comment"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='BlogCategory',
+            name="BlogCategory",
         ),
         migrations.DeleteModel(
-            name='BlogComment',
+            name="BlogComment",
         ),
         migrations.DeleteModel(
-            name='BlogPost',
+            name="BlogPost",
         ),
         migrations.DeleteModel(
-            name='BlogTag',
+            name="BlogTag",
         ),
     ]
