@@ -8,18 +8,23 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('blogapp', '0004_alter_post_me_gusta'),
+        ("blogapp", "0004_alter_post_me_gusta"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='post',
-            name='me_gusta',
-            field=models.ManyToManyField(blank=True, null=True, related_name='blogpost_me_gusta', to=settings.AUTH_USER_MODEL),
+            model_name="post",
+            name="me_gusta",
+            field=models.ManyToManyField(
+                blank=True,
+                null=True,
+                related_name="blogpost_me_gusta",
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.AlterField(
-            model_name='post',
-            name='tag',
-            field=models.ManyToManyField(blank=True, null=True, to='blogapp.tag'),
+            model_name="post",
+            name="tag",
+            field=models.ManyToManyField(blank=True, null=True, to="blogapp.tag"),
         ),
     ]
