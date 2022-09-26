@@ -22,11 +22,20 @@ def agregar_post(request):
     else:
       return redirect('CRUD')
 
+def editar_post(request,slug):
+  if request.method=='POST':
+    form = Formulario_post(request.POST, request.FILES)
+    if form.is_valid():
+      form.save()
+      return redirect('CRUD')
+    else:
+      form
+      return redirect('CRUD')
+
+
 def eliminar_post(request,slug):
   pass
 
-def editar_post(request,slug):
-  pass
 
 def buscar_post(request,nombre):
   pass

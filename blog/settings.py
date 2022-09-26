@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "ckeditor",
     "debug_toolbar",
     'widget_tweaks',
+    'mensajes',
 ]
 
 MIDDLEWARE = [
