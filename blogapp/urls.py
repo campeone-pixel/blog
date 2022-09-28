@@ -4,9 +4,10 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-  path( 'CRUD/',CRUD,name='CRUD'),
+  path( 'ver_posts/',ver_posts,name='ver_posts'),
   path( 'agregar_post/',agregar_post,name='agregar_post'),
-  path( 'eliminar_post/<slug>/',eliminar_post,name='eliminar_post'),
-  path( 'editar_post/<slug>/',editar_post,name='editar_post'),
-  path( 'buscar_post/filtro/',buscar_post,name='buscar_post'),
+  path( 'update_post/<slug:slug>',update_post,name='update_post'),
+  path( 'delete_post/<slug:slug>',delete_post,name='delete_post'),
+  path( 'search_posts/',search_posts,name='search_posts'),
+ 
 ]
