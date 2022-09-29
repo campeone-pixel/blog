@@ -10,7 +10,5 @@ urlpatterns = [
   path( 'eliminar_post/<slug>/',eliminar_post,name='eliminar_post'),
   path( 'editar_post/<slug>/',editar_post,name='editar_post'),
   path( 'buscar_post/filtro/',buscar_post,name='buscar_post'),
-  path("login",login_request, name='login'),
-  path("register",register, name='register'),
-  path("logout",LogoutView.as_view(template_name="app_entrega1/logout.html"), name='logout'),
+ 
 ]
