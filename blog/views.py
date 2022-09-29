@@ -100,7 +100,7 @@ def login_request(request):
 
       if user is not None:
         login(request,user)
-        return render(request, "login.html", {"mensaje":f"Bienvenido {usuario}"})
+        return render(request, "home.html", {"mensaje":f"Bienvenido {usuario}"})
 
       else:
         return render(request, "login.html", {"mensaje":"Error, datos incorrectos"})
