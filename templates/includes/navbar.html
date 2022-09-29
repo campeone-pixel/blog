@@ -24,9 +24,18 @@
                <li class="nav-item">
                   <a class="nav-link" href="{% url 'CRUD' %}">CRUD</a>
                </li>
-
-               
-               
+               {% if user.is_authenticated %}
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Log OUT!</a>
+               </li>
+               {% else %}
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Log in</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="{% url 'register' %}">Registro/a>
+               </li>
+               {% endfor %}
              </ul>
              
              

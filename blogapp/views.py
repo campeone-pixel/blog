@@ -39,3 +39,4 @@ def eliminar_post(request,slug):
 
 def buscar_post(request,nombre):
   pass
+

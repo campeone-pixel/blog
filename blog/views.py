@@ -5,7 +5,9 @@ from blogapp.forms import Formulario_comment
 from blogapp.models import *
 from django.db.models import Count
 from django.contrib.auth.models import User
-
+from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
+from django.contrib.auth import login,logout,authenticate
+from forms import *
 
 def datos_sidebar():
     ultimos_posteos = Post.objects.order_by("fecha_creacion")[0:3]
@@ -85,3 +87,42 @@ def ver_articulo(request, slug):
     else:
       form=Formulario_comment()
       return render(request, "home.html", {"articulo": articulo,'all_comments':all_comments, 'form':form})
+
+def login_request(request):
+  if request.method =="POST":
+    form=AuthenticationForm(request,data = request.POST)
+
+    if form.is_valid():
+      usuario = form.cleaned_data.get("username")
+      contra = form.cleaned_data.get("password")
+
+      user= authenticate(username=usuario, password=contra)
+
+      if user is not None:
+        login(request,user)
+        return render(request, "templates/inicio.html", {"mensaje":f"Bienvenido {usuario}"})
+
+      else:
+        return render(request, "templates/inicio.html", {"mensaje":"Error, datos incorrectos"})
+
+  else:
+        return render(request, "templates/inicio.html", {"mensaje":"Error, Formulario erroneo"})
+
+  form = AuthenticationForm()
+
+  return render(request, "templates/login.html", {"form":form})
+
+#--------------------------------------------------------------------------------------------------------------------------
+def register(request):
+  if request.method =="POST":
+    form = UserRegisterForm(request.POST)
+
+    if form.is_valid():
+      username = form.cleaned_data.get["username"]
+      form.save()
+      return render(request, "templates/inicio.html", {"mensaje":"{username} Usuario creado"})
+
+  else:
+    form=UserRegisterForm()
+
+  return render(request, "templates/register.html", {"form":form})
