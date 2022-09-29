@@ -8,4 +8,4 @@ from django.shortcuts import redirect
 
 
 def index_mensajes(request):
-  return render(request,"index_mensajes.html")
+  return render(request,"mensajes.html")
