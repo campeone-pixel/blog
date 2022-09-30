@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from re import template
 from django.contrib.auth.views import LogoutView
+from .views import *
 
 
 urlpatterns = [
@@ -37,7 +38,7 @@ urlpatterns = [
     path("articulos_buscados/", articulos_buscados, name="articulos_buscados"),
     path("sobre_nosotros/", sobre_nosotros, name="sobre_nosotros"),
     path('__debug__/', include('debug_toolbar.urls')),
-    path("login",login_request, name='login'),
+    path("login/",login_request, name='login'),
     path("register",register, name='register'),
     path("logout",LogoutView.as_view(template_name="app_entrega1/logout.html"), name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -80,18 +80,11 @@ class Post(Base):
         return self.titulo
 
     def get_absolute_url(self):
-        return reverse('posts:ver_articulo',args=[self.slug])
-
- 
-
+        return reverse('ver_articulo',args=[self.slug])
+    
     @property
     def num_de_comentarios(self):
         return Comment.objects.filter(post=self).count()
-
- 
-
-    
-
 
 class Comment(Base):
     post = models.ForeignKey(Post, related_name="comentarios", on_delete=models.CASCADE,null=True,blank=True)
