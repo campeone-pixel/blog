@@ -13,19 +13,24 @@
           <h2 class="text-dark pb-3">Your Mailbox</h2>
 
           <div class="navbar-nav navbar-expand">
-            <ul class=" navbar-nav mr-auto mt-2 mt-lg-0" >
+            <ul class=" navbar-nav mr-auto mt-2 mt-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="#inbox">
-                  <span >INBOX</span>
+                <a class="nav-link" href="{% url 'inbox_mensajes' %}">
+                  <span>INBOX</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link "  href="#sent" >
+                <a class="nav-link " href="{% url 'send_mensajes' %}">
                   <span>SENT</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#create" >
+                <a class="nav-link" href="{% url 'send_mensajes' %}">
+                  <span>CREATE</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'send_mensajes' %}">
                   <span>CREATE</span>
                 </a>
               </li>
@@ -39,87 +44,87 @@
         {% for mensaje in inbox %}
         <div class="tab-content" id="myTabContent">
 
-       
-                <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
-                  <tbody>
 
-                    <!-- row -->
-                    <tr>
-                      <!-- label -->
+          <table class="table">
+            <tbody>
 
+              <!-- row -->
+              <tr>
+                <td>
+                  {{ mensaje.sender }}
+                </td>
 
-                      <td>
-                        <span class="mb-0 text-muted">{{ mensaje.user }}</span>
-                      </td>
-                      <!-- Message -->
-                      <td>
-                        <a class="link" href="">
-                          
-                          <span class="text-dark">Lorem ipsum perspiciatis-</span>
-                        </a>
-                      </td>
-                      <!-- Attachment -->
-                      <td><i class="fa fa-paperclip text-muted"></i></td>
-                      <!-- Time -->
-                      <td class="text-muted">May 13</td>
-                    </tr>
+                <td>
 
 
-                  </tbody>
-                </table>
-        
+                  {{ mensaje.body }}
+
+                </td>
+
+                
+                <td >{{ mensaje.fecha_creacion }}</td>
+              </tr>
+
+
+            </tbody>
+          </table>
+
 
           {% endfor %}
           {% endif %}
+
+
+          {% if send %}
+          {% for mensaje in send %}
           <div class="tab-content" id="myTabContent">
 
-        
-                  <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
-                    <tbody>
+
+            <table class="table">
+              <tbody>
   
-                      <!-- row -->
-                      <tr>
-                        <!-- label -->
+                <!-- row -->
+                <tr>
+                  <td>
+                    {{ mensaje.receiver }}
+                  </td>
   
-  
-                        <td>
-                          <span class="mb-0 text-muted">Hritikgdfsdfsdfgdfg Roshan</span>
-                        </td>
-                        <!-- Message -->
-                        <td>
-                          <a class="link" href="">
-                            
-                            <span class="text-dark">Lorem ipsum perspiciatis-</span>
-                          </a>
-                        </td>
-                        <!-- Attachment -->
-                        <td><i class="fa fa-paperclip text-muted"></i></td>
-                        <!-- Time -->
-                        <td class="text-muted">May 13</td>
-                      </tr>
+                  <td>
   
   
-                    </tbody>
-                  </table>
-        
-          {% if sent %}
-          {% for mensaje in sent %}
-
-          {% endfor %}
-          {% endif %}
-
-
-          {% if form %}
-
-          {% endif %}
-
-
-
-
+                    {{ mensaje.body }}
+  
+                  </td>
+  
+                  
+                  <td >{{ mensaje.fecha_creacion }}</td>
+                </tr>
+  
+  
+              </tbody>
+            </table>
+  
+            </table>
+            {% endfor %}
+            {% endif %}
 
 
+            {% if form %}
+
+            <form action="{% url 'create' %}" method='POST' >
+              <input  name="mensajes" >
+              <button type="submit"><i> Enviar</i>
+              </button>
+           </form>
+
+            {% endif %}
+
+
+
+
+
+
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
