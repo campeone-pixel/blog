@@ -172,19 +172,18 @@
 				<div class="title-bordered mb-5 d-flex align-items-center">
 					<h1 class="h4">Buenas! Nosotros somos...</h1>
 					<ul class="list-inline social-icons ml-auto mr-3 d-none d-sm-block">
-						<li class="list-inline-item"><a href="{% url "errorpage.html" %}"><i class="ti-facebook"></i></a>
+						<li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a>
 						</li>
-						<li class="list-inline-item"><a href="{% url "errorpage.html" %}"><i class="ti-twitter-alt"></i></a>
+						<li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a>
 						</li>
-						<li class="list-inline-item"><a href="{% url "errorpage.html" %}"><i class="ti-linkedin"></i></a>
+						<li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a>
 						</li>
-						<li class="list-inline-item"><a href="{% url "errorpage.html" %}"><i class="ti-github"></i></a>
+						<li class="list-inline-item"><a href="#"><i class="ti-github"></i></a>
 						</li>
 					</ul>
 				</div>
 				<img src="images/author-full.jpg" class="img-fluid w-100 mb-4 rounded-lg" alt="author">
 				<div class="content">
-<<<<<<< HEAD
 					<h3>Soy Matias Mancini</h3>
 					<p>Tengo 20 años y vivo en Uruguay.
 						Desde la niñez me gustan los videojuegos y ello poco a poco fue alimentando
@@ -197,18 +196,6 @@
 							Desde la niñez me hice fan de las historieras y como los robots dominarian el mundo
 							variando artes marciales.</p>
 						<div class="quote"> <i class="ti-quote-left"></i>
-=======
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Condimentum in urna justo elit turpis risus vitae
-						viverra enim. Augue quis vitae in non nisi, posuere ultrices tempus. Feugiat consequat suspendisse laoreet
-						vitae enim adipiscing cursus. Duis nunc vitae tincidunt sed nibh id. Egestas erat consequat, ornare etiam
-						donec faucibus. Lorem ut enim nunc, senectus adipiscing sed. Lobortis commodo aliquet pulvinar molestie
-						faucibus diam. Semper porttitor justo, et dictum</p>
-					<p>Faucibus duis urna, consequat morbi imperdiet pulvinar. Mauris vitae sed aliquet eu tincidunt id. Nulla leo
-						eget erat vel pharetra. Morbi nullam morbi non purus, augue. Massa cras odio ante cursus a mauris. Volutpat
-						faucibus feugiat feugiat euismod congue ridiculus. Et ipsum euismod nulla et aenean diam duis. Sem molestie
-						est mauris sit. Et eleifend odio</p>
-					<div class="quote"> <i class="ti-quote-left"></i>
->>>>>>> e67ea828fe0b385cc6a325000178e6236512b5aa
 						<div>
 							<p>Life is a series of natural and spontaneous changes. Don’t resist them – that only create sorrow. Let
 								reality changes be reality. Let things flow naturally way they like.</p> <span class="quote-by"> -John
@@ -291,8 +278,7 @@
 					{% for comment in all_comments %}
 					<div class=" commented-section mt-4">
 						<div class="d-flex flex-row align-items-center commented-user">
-							<h5 class="mr-2">{{ comment.autor }}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{{
-								comment.fecha_creacion }}</span>
+							<h5 class="mr-2">{{ comment.autor }}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{{ comment.fecha_creacion }}</span>
 						</div>
 						<div class="comment-text-sm"><span> {{ comment.contenido|safe }}</span></div>
 						<hr>

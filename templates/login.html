@@ -1,40 +1,10 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 
 <html lang="en" style="height: 100%">
 
 <head>
-<<<<<<< HEAD
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="{% static 'css/stylelogin.css' %}">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-2"></div>
-            <div class="col-lg-6 col-md-8 login-box">
-                <div class="col-lg-12 login-key">
-                    <i class="fa fa-key" aria-hidden="true"></i>
-                </div>
-                <div class="col-lg-12 login-title">
-                    LOGIN PANEL
-                </div>
-                <form action="{% url 'login' %}" method="POST">
-                    {% csrf_token %}
-                    {{form.as_p}}
-                    <button type="submit">iniciar sesion</button>  
-                </form>
-                <div class="col-lg-12 login-form">
-                    <div class="col-lg-12 login-form">
-                        <form>
-                            <div class="form-group">
-                                <label class="form-control-label">USERNAME</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">PASSWORD</label>
-                                <input type="password" class="form-control" i>
-                            </div>
-=======
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- plugins -->
@@ -46,7 +16,6 @@
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
 
     <link rel="stylesheet" href="{% static 'plugins/themify-icons/themify-icons.css' %}">
->>>>>>> e67ea828fe0b385cc6a325000178e6236512b5aa
 
 
     <!-- Main Stylesheet -->
@@ -72,24 +41,20 @@
                                     <h3>Login to <strong>Blog</strong></h3>
                                 </div>
 
-                                <form action="#" method="post">
+                                <form action="{% url 'login_request' %}" method="post">
                                     <div class="form-group first">
-                                        <label for="username">Username</label>
-                                        <input type="text" class="form-control" placeholder="your-email@gmail.com"
-                                            id="username">
+                                        {% csrf_token %}
+                                        
+                                        {{ login_form.username|attr:"type:text"|add_class:"form-control"|attr:"placeholder:your-email@gmail.com"|attr:"id:username" }}
+                                       
                                     </div>
                                     <div class="form-group last mb-3">
-                                        <label for="password">Password</label>
-                                        <input type="password" class="form-control" placeholder="Your Password"
-                                            id="password">
+                                        {% csrf_token %}
+                                        {{ login_form.password|attr:"type:password"|add_class:"form-control"|attr:"placeholder:Your Password"|attr:"id:password" }}
+                                        
                                     </div>
                                     <div class="d-sm-flex mb-5 align-items-center">
-                                        <label class="control control--checkbox mb-3 mb-sm-0"><span
-                                                class="caption">Remember me</span>
-                                            <input type="checkbox" checked />
-                                            <div class="control__indicator"></div>
-                                        </label>
-                                        <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+                                   
                                     </div>
                                     <input type="submit" value="Log In" class="btn btn-block btn-primary">
                                 </form>
@@ -98,6 +63,22 @@
                     </div>
                 </div>
             
+<!--     <div class="container">
+        <form method="POST">
+        
+            <label for="username">Username</label>
+            <div>
+                form.username|add_class:"form-control" 
+            </div>
+            <label for="password">Password</label>
+            <div>
+                form.password|add_class:"form-control" 
+            </div>
+            <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Login</button>
+        </form>
+        
+    </div>
+  -->
  
 
 </body>

@@ -8,6 +8,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth import login,logout,authenticate
 from .forms import *
+from django.shortcuts import redirect
+from django.contrib import messages
+
+
+
 
 def datos_sidebar():
     ultimos_posteos = Post.objects.order_by("fecha_creacion")[0:3]
@@ -76,7 +81,7 @@ def ver_articulo(request, slug):
       if form_comment.is_valid():
         form_data= form_comment.cleaned_data
         contenido= form_data.get('contenido')
-        new_comment= Comment.objects.create(post = articulo,contenido = contenido)
+        new_comment= Comment.objects.create(post = articulo,contenido = contenido,autor=request.user)
         new_comment.save()
         form=Formulario_comment()
         return render(request, "home.html", {"articulo": articulo,'all_comments':all_comments, 'form':form})
@@ -100,29 +105,30 @@ def login_request(request):
 
       if user is not None:
         login(request,user)
-        return render(request, "home.html", {"mensaje":f"Bienvenido {usuario}"})
+        return redirect("inicio")
 
       else:
         return render(request, "login.html", {"mensaje":"Error, datos incorrectos"})
 
   else:
-        return render(request, "login.html", {"mensaje":"Error, Formulario erroneo"})
+    login_form = AuthenticationForm()
+    return render(request, "login.html", {"login_form":login_form})
+      
+def logout_request(request):
+    logout(request)
+    messages.info(request, "Logged out successfully!")
+    return redirect("inicio")
+  
 
-  form = AuthenticationForm()
-
-  return render(request, "login.html", {"form":form})
-
-#--------------------------------------------------------------------------------------------------------------------------
 def register(request):
-  if request.method =="POST":
-    form = UserRegisterForm(request.POST)
-
-    if form.is_valid():
-      username = form.cleaned_data.get["username"]
-      form.save()
-      return render(request, "register.html", {"mensaje":f"{username} Usuario creado"})
-
-  else:
-    form=UserRegisterForm()
-
-    return render(request, "register.html", {"form":form})
+    if request.method =="POST":
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, "Registro exitoso." )
+            return redirect('inicio')
+        messages.error(request, "Fallo el registro. Revise los datos suministrado.")
+    else:		
+        register_form=UserRegisterForm()
+        return render(request, "register.html", {"register_form":register_form})
