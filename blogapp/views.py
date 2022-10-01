@@ -6,8 +6,9 @@ from django.db.models import Count
 from .forms import Formulario_post
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(redirect_field_name='my_redirect_field')
 def ver_posts(request):
   all_posts = Post.objects.all()
   form=Formulario_post()

@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 
 <html lang="en" style="height: 100%">
@@ -40,18 +41,32 @@
                                     <h3>Registro a <strong>Blog</strong></h3>
                                 </div>
 
-                                <form action="#" method="post">
+                                <form action="{% url 'register' %}" method="post">
                                     <div class="form-group first">
-                                        <label for="username">Username</label>
-                                        <input type="text" class="form-control" 
-                                            id="username">
+                                        {% csrf_token %}
+                                        
+{{ register_form.username|attr:"type:text"|add_class:"form-control"|attr:"placeholder:Usuario"|attr:"id:username" }}
+                                       
+                                    </div>
+                                    <div class="form-group first">
+                                        
+                                        
+{{ register_form.email|attr:"type:text"|add_class:"form-control"|attr:"placeholder:email@gmail.com"|attr:"id:username" }}
+                                       
                                     </div>
                                     <div class="form-group last mb-3">
-                                        <label for="password">Password</label>
-                                        <input type="password" class="form-control" placeholder="Your Password"
-                                            id="password">
+                                        
+        {{ register_form.password1|attr:"type:password"|add_class:"form-control"|attr:"placeholder:Tu contrasenia"|attr:"id:password" }}
+                                        
                                     </div>
-                                
+                                    <div class="form-group last mb-3">
+                                        
+        {{ register_form.password2|attr:"type:password"|add_class:"form-control"|attr:"placeholder:Repeti tu contrasenia"|attr:"id:password" }}
+                                        
+                                    </div>
+                                    <div class="d-sm-flex mb-5 align-items-center">
+                                   
+                                    </div>
                                     <input type="submit" value="Registrate" class="btn btn-block btn-primary">
                                 </form>
                             </div>
