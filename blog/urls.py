@@ -27,6 +27,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("blogapp/", include("blogapp.urls")),
     path("mensajes/", include("mensajes.urls")),
+    path("users/", include("users.urls")),
     path("", inicio, name="inicio"),
     path("ver_articulo/<slug>/", ver_articulo, name="ver_articulo"),
     path(
@@ -38,7 +39,5 @@ urlpatterns = [
     path("articulos_buscados/", articulos_buscados, name="articulos_buscados"),
     path("sobre_nosotros/", sobre_nosotros, name="sobre_nosotros"),
     path('__debug__/', include('debug_toolbar.urls')),
-    path("login_request/",login_request, name='login_request'),
-    path("register",register, name='register'),
-    path("logout",logout_request, name='logout'),
+  
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
