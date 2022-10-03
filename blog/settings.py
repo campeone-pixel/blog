@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'mensajes',
     'users',
+    'crispy_forms',
+    'imagekit',
 ]
 
 MIDDLEWARE = [

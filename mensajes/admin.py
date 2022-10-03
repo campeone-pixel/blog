@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from mensajes.models import mensajes
+from mensajes.models import Mensajes
 
-admin.site.register(mensajes)
+admin.site.register(Mensajes)

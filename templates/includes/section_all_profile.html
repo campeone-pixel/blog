@@ -1,0 +1,318 @@
+{% load static %}
+{% load widget_tweaks %}
+
+
+
+
+<div class="container-xl col-lg-8  mb-5 mb-lg-0 pt-5" style="max-width: 700px;">
+  <div class="row  ">
+
+
+
+
+
+
+    <div class="col-xl-12">
+
+      <!-- Profile picture card-->
+
+      <div class="card mb-4 p-1 mb-xl-12 ">
+
+        <div class="navbar-nav navbar-expand">
+          <ul class=" navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{% url 'edit_profile' %}">Editar Perfil</a>
+
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-dark" href="{% url 'change_pass' %}">Cambiar contrasenia</a>
+
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{% url 'inbox_mensajes' %}">Mensajes recibidos</a>
+
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{% url 'send_mensajes' %}">Mensages enviados</a>
+
+              </a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link text-dark" href="{% url 'create' %}">Crear mensaje</a>
+
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+
+  {% if inbox %}
+  {% for mensaje in inbox %}
+  <div class="card mb-4">
+    <div class="card-header">Mensajes recibidos</div>
+    <div class="card-body">
+
+
+      <table class="table">
+        <tbody>
+
+          <!-- row -->
+          <tr>
+            <td>
+              {{ mensaje.sender }}
+            </td>
+
+            <td>
+
+
+              {{ mensaje.body }}
+
+            </td>
+
+
+            <td>{{ mensaje.fecha_creacion }}</td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+{% endfor %}
+{% endif %}
+
+
+{% if send %}
+{% for mensaje in send %}
+
+
+<div class="card mb-4">
+  <div class="card-header">Mensajes enviados</div>
+  <div class="card-body">
+
+
+    <table class="table">
+      <tbody>
+
+        <!-- row -->
+        <tr>
+          <td>
+            {{ mensaje.receiver }}
+          </td>
+
+          <td>
+
+
+            {{ mensaje.body }}
+
+          </td>
+
+
+          <td>{{ mensaje.fecha_creacion }}</td>
+        </tr>
+
+
+      </tbody>
+    </table>
+
+    </table>
+
+  </div>
+</div>
+</div>
+
+{% endfor %}
+{% endif %}
+
+
+{% if u_form %}
+
+<div class="row mb-4">
+  <div class="col-xl-12">
+    <!-- Profile picture card-->
+    <div class="card mb-4 mb-xl-0">
+      <div class="card-header">Imagen de Perfil</div>
+      <div class="card-body text-center">
+        <!-- Profile picture image-->
+        <img class="rounded-circle account-img" src="{{ user.profile.image_profile.url }}" />
+
+        <!-- Profile picture upload button-->
+        <form action="{% url 'edit_profile' %}" enctype="multipart/form-data" method="POST">
+
+          {% csrf_token %}
+          {{ p_form.as_table }}
+
+          <input type="submit" class="btn btn-success" value="Add">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-12 ">
+
+    <div class="card mb-4">
+      <div class="card-header">Cambiar Datos</div>
+      <div class="card-body">
+        <form method="POST" action="{% url 'edit_profile' %}">
+          {% csrf_token %}
+
+          <!-- Form Row-->
+          <div class="row gx-3 mb-3">
+            <!-- Form Group (first name)-->
+            <div class="col-md-6">
+              <label class="small mb-1" for="inputFirstName">First name</label>
+              {{ u_form.first_name }}
+            </div>
+            <!-- Form Group (last name)-->
+            <div class="col-md-6">
+              <label class="small mb-1" for="inputLastName">Last name</label>
+              {{ u_form.last_name }}
+            </div>
+          </div>
+          <!-- Form Row        -->
+
+          <!-- Form Group (email address)-->
+          <div class="mb-3">
+            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+            {{ u_form.email }}
+          </div>
+          <!-- Form Row-->
+
+          <input type="submit" class="btn btn-success" value="Add">
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+{% endif %}
+
+
+{% if form_new_message %}
+
+<div class="card mb-4">
+  <div class="card-header">Enviar mensaje</div>
+  <div class="card-body">
+    <form method="POST" action="{% url 'create' %}">
+      {% csrf_token %}
+
+      <!-- Form Row-->
+
+      <!-- Form Group (first name)-->
+      
+      <div class="row gx-3 mb-3">
+
+        <div class="col-md-12 ">
+          <label class="small mb-1" for="inputLastName"></label>
+          {{ form_new_message.sender }}
+        </div>
+
+        <!-- Form Group (last name)-->
+        <div class="col-md-12 ">
+          <label class="small mb-1" for="inputLastName">Enviar a:</label>
+          {{ form_new_message.receiver }}
+        </div>
+
+        <!-- Form Row        -->
+
+        <!-- Form Group (email address)-->
+        <div class="col-md-12 ">
+          <label class="small mb-1" for="inputEmailAddress">Mensaje:</label>
+          {{ form_new_message.body }}
+        </div>
+      </div>
+      <!-- Form Row-->
+
+      <input type="submit" class="btn btn-success" value="Enviar">
+    </form>
+  </div>
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+
+
+
+{% endif %}
+{% if change_pass %}
+
+
+<div class="card mb-4">
+  <div class="card-header">Cambiar Contrasenia</div>
+  <div class="card-body">
+    <form method="POST" action="{% url 'change_pass' %}">
+      {% csrf_token %}
+
+      <!-- Form Row-->
+
+      <!-- Form Group (first name)-->
+      <div class="">
+        <label class="small mb-1" for="inputFirstName">Contrasenia anterior</label>
+        {{ change_pass.old_password }}
+      </div>
+      <div class="row gx-3 mb-3">
+        <!-- Form Group (last name)-->
+        <div class="col-md-12 ">
+          <label class="small mb-1" for="inputLastName">Nueva contrasenia</label>
+          {{ change_pass.new_password1 }}
+        </div>
+
+        <!-- Form Row        -->
+
+        <!-- Form Group (email address)-->
+        <div class="col-md-12 ">
+          <label class="small mb-1" for="inputEmailAddress">Repetir contrasenia</label>
+          {{ change_pass.new_password2 }}
+        </div>
+      </div>
+      <!-- Form Row-->
+
+      <input type="submit" class="btn btn-success" value="Add">
+    </form>
+  </div>
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+
+
+
+
+{% endif %}
+
+</div>
+</div>
+
+
+
+
+
+
+</div>
+</div>
+</div>
+
+</div>
