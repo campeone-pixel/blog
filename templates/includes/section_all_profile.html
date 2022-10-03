@@ -55,7 +55,7 @@
 
 
   {% if inbox %}
-  {% for mensaje in inbox %}
+  
   <div class="card mb-4">
     <div class="card-header">Mensajes recibidos</div>
     <div class="card-body">
@@ -63,7 +63,7 @@
 
       <table class="table">
         <tbody>
-
+          {% for mensaje in inbox %}
           <!-- row -->
           <tr>
             <td>
@@ -79,8 +79,9 @@
 
 
             <td>{{ mensaje.fecha_creacion }}</td>
+            <td><a href="{% url 'create' mensaje.sender %}">Responder</a></td>
           </tr>
-
+          {% endfor %}
 
         </tbody>
       </table>
@@ -89,12 +90,12 @@
 </div>
 
 
-{% endfor %}
+
 {% endif %}
 
 
 {% if send %}
-{% for mensaje in send %}
+
 
 
 <div class="card mb-4">
@@ -104,7 +105,7 @@
 
     <table class="table">
       <tbody>
-
+        {% for mensaje in send %}
         <!-- row -->
         <tr>
           <td>
@@ -121,7 +122,7 @@
 
           <td>{{ mensaje.fecha_creacion }}</td>
         </tr>
-
+        {% endfor %}
 
       </tbody>
     </table>
@@ -132,7 +133,7 @@
 </div>
 </div>
 
-{% endfor %}
+
 {% endif %}
 
 
@@ -217,10 +218,7 @@
       
       <div class="row gx-3 mb-3">
 
-        <div class="col-md-12 ">
-          <label class="small mb-1" for="inputLastName"></label>
-          {{ form_new_message.sender }}
-        </div>
+       
 
         <!-- Form Group (last name)-->
         <div class="col-md-12 ">

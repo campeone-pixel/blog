@@ -30,7 +30,7 @@ def login_request(request):
 
             if user is not None:
                 login(request, user)
-                return redirect("login_request")
+                return redirect("inicio")
 
         else:
  

@@ -1,6 +1,8 @@
 from contextlib import ContextDecorator
+from email.message import Message
 from unicodedata import category
 from urllib import request
+from django.dispatch import receiver
 from django.shortcuts import render
 from blogapp.models import *
 from django.db.models import Count
@@ -22,26 +24,34 @@ def send_mensajes(request):
     return render(request, "all_profile.html", {"send": send})
 
 
-def create(request):
-
-    if request.method == "POST":
-        form_new_message = Formulario_mensaje(request.POST)
-        
-        if form_new_message.is_valid:
-
-            form_new_message.save()
-            return redirect("inicio")
-
+def create(request,responder=None):
+    if responder==None:
+        if request.method == "POST":
+            receiver=request.POST['receiver']
+            body=request.POST['body']
+            receiver_user= User.objects.get(username=receiver)
+            nuevo_mensaje= Mensajes.objects.create(sender=request.user, receiver=receiver_user,body=body)
+            nuevo_mensaje.save()
+            return redirect('send_mensajes')
         else:
-            return redirect("create")
-
+            form_new_message = Formulario_mensaje(initial={'sender': request.user})
+            return render(
+                request, "all_profile.html", {"form_new_message": form_new_message}
+            )
     else:
-        form_new_message = Formulario_mensaje(initial={'sender': request.user})
-        
+        if request.method == "POST":
+            receiver=request.POST['receiver']
+            body=request.POST['body']
+            receiver_user= User.objects.get(username=receiver)
+            nuevo_mensaje= Mensajes.objects.create(sender=request.user, receiver=receiver_user,body=body)
+            nuevo_mensaje.save()
+            return redirect('send_mensajes')
+        else:
+            form_new_message = Formulario_mensaje(initial={'sender': request.user,'receiver':responder})
+            return render(
+                request, "all_profile.html", {"form_new_message": form_new_message}
+            )
 
-        return render(
-            request, "all_profile.html", {"form_new_message": form_new_message}
-        )
 
 
 def buscar_usuario(request):
