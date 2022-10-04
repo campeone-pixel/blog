@@ -278,7 +278,7 @@
 					{% for comment in all_comments %}
 					<div class=" commented-section mt-4">
 						<div class="d-flex flex-row align-items-center commented-user">
-							<h5 class="mr-2">{{ comment.autor }}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{{ comment.fecha_creacion }}</span>
+							<h5 class="mr-2"><a href="{% url 'ver_profile' comment.autor.id %}">{{ comment.autor }}</a></h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{{ comment.fecha_creacion }}</span>
 						</div>
 						<div class="comment-text-sm"><span> {{ comment.contenido|safe }}</span></div>
 						<hr>
@@ -300,4 +300,49 @@
 	</div>
 </section>
 
+{% endif %}
+
+
+
+
+{% if ver_perfil %}
+
+<div class="container mt-5">
+    
+	<div class="row d-flex justify-content-center">
+			
+			<div class="col-md-7">
+					
+					<div class="card mb-5 p-3 py-4">
+							
+							<div class="text-center">
+									<img src="{{ ver_perfil.image_profile.url }}" width="100" class="rounded-circle">
+							</div>
+							
+							<div class="text-center mt-3">
+									
+									<h5 class="mt-2 mb-0">{{ ver_usuario.username }}</h5>
+									
+									
+
+									
+									<div class="buttons">
+											
+											<button class="btn btn-outline-primary px-4"><a href="{% url 'create' ver_usuario %}">Message</a></button>
+										
+									</div>
+									
+									
+							</div>
+							
+						 
+							
+							
+					</div>
+					
+			</div>
+			
+	</div>
+	
+</div>
 {% endif %}

@@ -39,5 +39,6 @@ urlpatterns = [
     path("articulos_buscados/", articulos_buscados, name="articulos_buscados"),
     path("sobre_nosotros/", sobre_nosotros, name="sobre_nosotros"),
     path('__debug__/', include('debug_toolbar.urls')),
+    path("ver_profile/<usuario>", ver_profile, name="ver_profile"),
   
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

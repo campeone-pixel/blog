@@ -13,5 +13,5 @@ urlpatterns = [
   path('create/<responder>', create, name='create'),  
   
   
-  path('buscar_usuario/',buscar_usuario,name='buscar_usuario'),
+ 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -5,11 +5,13 @@ from blogapp.forms import Formulario_comment
 from blogapp.models import *
 from django.db.models import Count
 from django.contrib.auth.models import User
+from users.models import Profile
 from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth import login,logout,authenticate
 from .forms import *
 from django.shortcuts import redirect
 from django.contrib import messages
+
 
 
 
@@ -92,4 +94,11 @@ def ver_articulo(request, slug):
     else:
       form=Formulario_comment()
       return render(request, "home.html", {"articulo": articulo,'all_comments':all_comments, 'form':form})
+
+def ver_profile(request,usuario):
+    
+    ver_usuario=User.objects.get(id=usuario)
+    ver_perfil=Profile.objects.get(user=usuario)
+    return render(request, 'home.html',{"ver_perfil":ver_perfil,'ver_usuario':ver_usuario})
+
 
