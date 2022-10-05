@@ -1,80 +1,65 @@
-from contextlib import ContextDecorator
-from email.message import Message
-from unicodedata import category
-from urllib import request
-from django.dispatch import receiver
 from django.shortcuts import render
 from blogapp.models import *
-from django.db.models import Count
-
 from django.shortcuts import redirect
-
 from mensajes.forms import Formulario_mensaje
 from .models import Mensajes
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 
 
-def inbox_mensajes(request):
-    inbox = Mensajes.objects.filter(receiver=request.user)
+def mensajes_recibidos(request):
+    inbox = Mensajes.objects.filter(recibidio_por=request.user)
     return render(request, "all_profile.html", {"inbox": inbox})
 
 
-def send_mensajes(request):
+def mensajes_enviados(request):
     send = Mensajes.objects.filter(sender=request.user)
 
     return render(request, "all_profile.html", {"send": send})
 
 
-def create_func():
-    pass
 
-
-def create(request, responder=None):
+def crear_mensajes(request, responder=None):
     if responder == None:
         if request.method == "POST":
-
-            receiver = request.POST["receiver"]
-            body = request.POST["body"]
+            recibidio_por = request.POST["recibidio_por"]
+            cuerpo = request.POST["cuerpo"]
             try:
-                receiver_user = User.objects.get(username=receiver)
+                obj_recibido_por = User.objects.get(username=recibidio_por)
                 nuevo_mensaje = Mensajes.objects.create(
-                    sender=request.user, receiver=receiver_user, body=body
+                    enviado_por=request.user, recibido_por=obj_recibido_por, cuerpo=cuerpo
                 )
                 nuevo_mensaje.save()
-                return redirect("send_mensajes")
+                return redirect("mensajes_enviados")
             except ObjectDoesNotExist:
                 messages.error(request, "El usuario no existe.")
-                return redirect("create")
+                return redirect("crear_mensajes")
 
         else:
-            form_new_message = Formulario_mensaje(initial={"sender": request.user})
+            form_nuevo_mensaje = Formulario_mensaje(initial={"enviado_por": request.user})
             return render(
-                request, "all_profile.html", {"form_new_message": form_new_message}
+                request, "all_profile.html", {"form_nuevo_mensaje": form_nuevo_mensaje}
             )
     else:
         if request.method == "POST":
-            receiver = request.POST["receiver"]
-            body = request.POST["body"]
+            recibidio_por = request.POST["recibidio_por"]
+            cuerpo = request.POST["cuerpo"]
             try:
-                receiver_user = User.objects.get(username=receiver)
+                obj_recibido_por = User.objects.get(username=recibidio_por)
                 nuevo_mensaje = Mensajes.objects.create(
-                    sender=request.user, receiver=receiver_user, body=body
+                    enviado_por=request.user, recibido_por=obj_recibido_por, cuerpo=cuerpo
                 )
                 nuevo_mensaje.save()
-                return redirect("send_mensajes")
+                return redirect("mensajes_enviados")
             except ObjectDoesNotExist:
                 messages.error(request, "El usuario no existe.")
-                return redirect("create")
-
+                return redirect("crear_mensajes")
         else:
-            form_new_message = Formulario_mensaje(
-                initial={"sender": request.user, "receiver": responder}
+            form_nuevo_mensaje = Formulario_mensaje(
+                initial={"enviado_por": request.user, "recibido_por": responder}
             )
             return render(
-                request, "all_profile.html", {"form_new_message": form_new_message}
+                request, "all_profile.html", {"form_nuevo_mensaje": form_nuevo_mensaje}
             )
 
 
-def buscar_usuario(request):
-    pass

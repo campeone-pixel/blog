@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from blogapp.forms import Formulario_comment
+from blogapp.forms import Formulario_comentario
 from blogapp.models import *
 from django.db.models import Count
 from django.contrib.auth.models import User
-from users.models import Profile
+from users.models import Perfil
 from .forms import *
 from django.shortcuts import redirect
 
@@ -91,7 +91,7 @@ def ver_articulo(request, slug):
 
     todos_los_comentarios = Comment.objects.filter(post=articulo)
     if request.method == "POST":
-        form_comentario = Formulario_comment(data=request.POST)
+        form_comentario = Formulario_comentario(data=request.POST)
         if form_comentario.is_valid():
             form_data = form_comentario.cleaned_data
             contenido = form_data.get("contenido")
@@ -99,14 +99,14 @@ def ver_articulo(request, slug):
                 post=articulo, contenido=contenido, autor=request.user
             )
             nuevo_comentario.save()
-            form = Formulario_comment()
+            form = Formulario_comentario()
             return render(
                 request,
                 "home.html",
                 {"articulo": articulo, "todos_los_comentarios": todos_los_comentarios, "form": form},
             )
         else:
-            form = Formulario_comment()
+            form = Formulario_comentario()
             return render(
                 request,
                 "home.html",
@@ -114,7 +114,7 @@ def ver_articulo(request, slug):
             )
 
     else:
-        form = Formulario_comment()
+        form = Formulario_comentario()
         return render(
             request,
             "home.html",

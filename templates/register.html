@@ -41,7 +41,7 @@
                                     <h3>Registro a <strong>Blog</strong></h3>
                                 </div>
 
-                                <form action="{% url 'register' %}" method="post">
+                                <form action="{% url 'registro' %}" method="post">
                                     <div class="form-group first">
                                         {% csrf_token %}
                                         
@@ -49,18 +49,18 @@
                                        
                                     </div>
                                     <div class="form-group first">
-                                        
+                                        {% csrf_token %}    
                                         
                                     {{ register_form.email|attr:"type:text"|add_class:"form-control"|attr:"placeholder:email@gmail.com"|attr:"id:username" }}
                                        
                                     </div>
                                     <div class="form-group last mb-3">
-                                        
+                                        {% csrf_token %}   
                                      {{ register_form.password1|attr:"type:password"|add_class:"form-control"|attr:"placeholder:Tu contrasenia"|attr:"id:password" }}
                                         
                                     </div>
                                     <div class="form-group last mb-3">
-                                        
+                                        {% csrf_token %}   
                                      {{ register_form.password2|attr:"type:password"|add_class:"form-control"|attr:"placeholder:Repeti tu contrasenia"|attr:"id:password" }}
                                         
                                     </div>

@@ -10,9 +10,9 @@ from .views import *
 
 urlpatterns = [
   
-    path("login_request/",login_request, name='login_request'),
-    path("register/",register, name='register'),
-    path("logout/",logout_request, name='logout'),
-    path("edit_profile/",edit_profile, name='edit_profile'),
-    path("change_pass/",change_pass, name='change_pass'),
+    path("iniciar_sesion/",iniciar_sesion, name='iniciar_sesion'),
+    path("registro/",registro, name='registro'),
+    path("cerrar_sesion/",cerrar_sesion, name='cerrar_sesion'),
+    path("editar_perfil/",editar_perfil, name='editar_perfil'),
+    path("cambiar_contrasenia/",cambiar_contrasenia, name='cambiar_contrasenia'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -21,26 +21,26 @@
         <div class="navbar-nav navbar-expand">
           <ul class=" navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <a class="nav-link text-dark" href="{% url 'edit_profile' %}">Editar Perfil</a>
+              <a class="nav-link text-dark" href="{% url 'editar_perfil' %}">Editar Perfil</a>
 
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-dark" href="{% url 'change_pass' %}">Cambiar contrasenia</a>
+              <a class="nav-link text-dark" href="{% url 'cambiar_contrasenia' %}">Cambiar contrasenia</a>
 
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" href="{% url 'inbox_mensajes' %}">Mensajes recibidos</a>
+              <a class="nav-link text-dark" href="{% url 'mensajes_recibidos' %}">Mensajes recibidos</a>
 
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-dark" href="{% url 'send_mensajes' %}">Mensages enviados</a>
+              <a class="nav-link text-dark" href="{% url 'mensajes_enviados' %}">Mensages enviados</a>
 
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link text-dark" href="{% url 'create' %}">Crear mensaje</a>
+              <a class="nav-link text-dark" href="{% url 'crear_mensajes' %}">Crear mensaje</a>
 
               </a>
             </li>
@@ -79,7 +79,7 @@
 
 
             <td>{{ mensaje.fecha_creacion }}</td>
-            <td><a href="{% url 'create' mensaje.sender %}">Responder</a></td>
+            <td><a href="{% url 'create' mensaje.enviado_por %}">Responder</a></td>
           </tr>
           {% endfor %}
 
@@ -146,10 +146,10 @@
       <div class="card-header">Imagen de Perfil</div>
       <div class="card-body text-center">
         <!-- Profile picture image-->
-        <img class="rounded-circle account-img" src="{{ user.profile.image_profile.url }}" />
+        <img class="rounded-circle account-img" src="{{ user.perfil.imagen_perfil.url }}" />
 
         <!-- Profile picture upload button-->
-        <form action="{% url 'edit_profile' %}" enctype="multipart/form-data" method="POST">
+        <form action="{% url 'editar_perfil' %}" enctype="multipart/form-data" method="POST">
 
           {% csrf_token %}
           {{ p_form.as_table }}
@@ -165,7 +165,7 @@
     <div class="card mb-4">
       <div class="card-header">Cambiar Datos</div>
       <div class="card-body">
-        <form method="POST" action="{% url 'edit_profile' %}">
+        <form method="POST" action="{% url 'editar_perfil' %}">
           {% csrf_token %}
 
           <!-- Form Row-->
@@ -204,12 +204,12 @@
 {% endif %}
 
 
-{% if form_new_message %}
+{% if form_nuevo_mensaje %}
 
 <div class="card mb-4">
   <div class="card-header">Enviar mensaje</div>
   <div class="card-body">
-    <form method="POST" action="{% url 'create' %}">
+    <form method="POST" action="{% url 'crear_mensajes' %}">
       {% csrf_token %}
 
       <!-- Form Row-->
@@ -223,7 +223,7 @@
         <!-- Form Group (last name)-->
         <div class="col-md-12 ">
           <label class="small mb-1" for="inputLastName">Enviar a:</label>
-          {{ form_new_message.receiver }}
+          {{ form_nuevo_mensaje.recibido_por }}
         </div>
 
         <!-- Form Row        -->
@@ -231,7 +231,7 @@
         <!-- Form Group (email address)-->
         <div class="col-md-12 ">
           <label class="small mb-1" for="inputEmailAddress">Mensaje:</label>
-          {{ form_new_message.body }}
+          {{ form_nuevo_mensaje.cuerpo }}
         </div>
       </div>
       <!-- Form Row-->
@@ -257,7 +257,7 @@
 <div class="card mb-4">
   <div class="card-header">Cambiar Contrasenia</div>
   <div class="card-body">
-    <form method="POST" action="{% url 'change_pass' %}">
+    <form method="POST" action="{% url 'cambiar_contrasenia' %}">
       {% csrf_token %}
 
       <!-- Form Row-->

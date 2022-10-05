@@ -1,17 +1,13 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from blog.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from mensajes.views import *
 
-
 urlpatterns = [
-  path('inbox_mensajes/',inbox_mensajes,name='inbox_mensajes'),
-  path('send_mensajes/',send_mensajes,name='send_mensajes'),
-  path('create/',create,name='create'),
-  path('create/<responder>', create, name='create'),  
+  path('mensajes_recibidos/',mensajes_recibidos,name='mensajes_recibidos'),
+  path('mensajes_enviados/',mensajes_enviados,name='mensajes_enviados'),
+  path('crear_mensajes/',crear_mensajes,name='crear_mensajes'),
+  path('crear_mensajes/<responder>', crear_mensajes, name='crear_mensajes'),  
   
-  
- 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

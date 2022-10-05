@@ -11,8 +11,8 @@ class Base(models.Model):
     fecha_eliminacion = models.DateField(auto_now=True, auto_now_add=False)
 
 class Mensajes(Base):
-  sender=  models.ForeignKey(User, related_name='sent_messages',on_delete=models.PROTECT)
-  receiver=  models.ForeignKey(User, related_name='receiver_messages',on_delete=models.PROTECT)
-  body = models.CharField(max_length=500)
+  enviado_por=  models.ForeignKey(User, related_name='sent_messages',on_delete=models.PROTECT)
+  recibido_por=  models.ForeignKey(User, related_name='receiver_messages',on_delete=models.PROTECT)
+  cuerpo = models.CharField(max_length=500)
 
 
