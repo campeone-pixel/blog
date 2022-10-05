@@ -3,7 +3,7 @@
 
 
 
-{% if ver_posts %}
+{% if ver_posts and form %}
 
 <div class="container-xl">
   <div class="table-responsive">
@@ -15,7 +15,7 @@
           </div>
           
           
-            <form action="{% url 'search_posts' %}" method='GET' class="">
+            <form action="{% url 'buscar_posts' %}" method='GET' class="">
               <input  name="s" type="search" class="search-box-crud widget-search">
               <button type="submit" class="btn btn-success "><i ></i> <span>Buscar Post</span></button>
             </form>
@@ -43,9 +43,9 @@
 
 
             <td>
-              <a href="{% url 'update_post' post.slug %}"><i class="material-icons" data-toggle="tooltip"
+              <a href="{% url 'actualizar_post' post.slug %}"><i class="material-icons" data-toggle="tooltip"
                   title="Edit">&#xE254;</i></a>
-              <a href="{% url 'delete_post' post.slug %}"><i class="material-icons"
+              <a href="{% url 'borrar_post' post.slug %}"><i class="material-icons"
                   data-toggle="tooltip" title="Delete">&#xE872;</i></a>   
               <a href="{{ post.get_absolute_url }}"><i class="material-icons"
                     data-toggle="tooltip" title="Delete">&#xe8f4;</i></a>
@@ -55,21 +55,7 @@
         </tbody>
       </table>
 
-      {% if paginas %}
-      <div class="clearfix">
-        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-        <ul class="pagination">
 
-          <li class="page-item disabled"><a href="#">Previous</a></li>
-          {% for pagina in paginas %}
-          <li class="page-item"><a href="#" class="page-link">1</a></li>
-
-          {% endfor %}
-          <li class="page-item"><a href="#" class="page-link">Next</a></li>
-
-        </ul>
-      </div>
-      {% endif %}
     </div>
   </div>
 </div>
@@ -84,7 +70,7 @@
 
         <div class="modal-header">
           <h4 class="modal-title">Add Employee</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
         </div>
         <div class="modal-body">
           <div class="form-group">
@@ -144,7 +130,7 @@
 <div class="container-xl">
   <div class="table-responsive">
     <div class="table-wrapper">
-      <form action="{% url 'update_post' post.slug %}" method="POST" enctype="multipart/form-data">
+      <form action="{% url 'actualizar_post' post.slug %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
 

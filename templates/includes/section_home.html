@@ -7,8 +7,8 @@
 			<div class="col-lg-8  mb-5 mb-lg-0">
 
 
-				{% if all_posts %}
-				{% for articulo in all_posts %}
+				{% if todos_los_posts %}
+				{% for articulo in todos_los_posts %}
 				<article class="row mb-5">
 					<div class="col-12">
 						<div class="post-slider">
@@ -73,6 +73,9 @@
 
 				{% if articulos_por_categoria %}
 				{% for articulo in articulos_por_categoria %}
+
+
+				
 				<article class="row mb-5">
 					<div class="col-12">
 						<div class="post-slider">
@@ -138,12 +141,12 @@
 
 
 
-				{% if message %}
+				{% if mensajes %}
 
 				<article class="row mb-5">
 
 					<div class="col-12 mx-auto">
-						<h3><a class="post-title" href="#">{{ message }}</a></h3>
+						<h3><a class="post-title" href="#">{{ mensajes }}</a></h3>
 					</div>
 				</article>
 
@@ -275,12 +278,12 @@
 
 
 				<div>
-					{% for comment in all_comments %}
+					{% for comentario in todos_los_comentarios %}
 					<div class=" commented-section mt-4">
 						<div class="d-flex flex-row align-items-center commented-user">
-							<h5 class="mr-2"><a href="{% url 'ver_profile' comment.autor.id %}">{{ comment.autor }}</a></h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{{ comment.fecha_creacion }}</span>
+							<h5 class="mr-2"><a href="{% url 'ver_perfil' comentario.autor.id %}">{{ comentario.autor }}</a></h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{{ comentario.fecha_creacion }}</span>
 						</div>
-						<div class="comment-text-sm"><span> {{ comment.contenido|safe }}</span></div>
+						<div class="comment-text-sm"><span> {{ comentario.contenido|safe }}</span></div>
 						<hr>
 						{% endfor %}
 
