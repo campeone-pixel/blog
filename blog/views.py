@@ -125,7 +125,7 @@ def ver_articulo(request, slug):
 def ver_perfil(request, usuario):
 
     ver_usuario = User.objects.get(id=usuario)
-    ver_perfil = Profile.objects.get(user=usuario)
+    ver_perfil = Perfil.objects.get(usuario=usuario)
     return render(
         request, "home.html", {"ver_perfil": ver_perfil, "ver_usuario": ver_usuario}
     )

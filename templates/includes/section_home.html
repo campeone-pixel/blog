@@ -75,7 +75,7 @@
 				{% for articulo in articulos_por_categoria %}
 
 
-				
+
 				<article class="row mb-5">
 					<div class="col-12">
 						<div class="post-slider">
@@ -173,7 +173,7 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="title-bordered mb-5 d-flex align-items-center">
-					<h1 class="h4">Buenas! Nosotros somos...</h1>
+					<h1 class="h4">Soy Matias Mancini.</h1>
 					<ul class="list-inline social-icons ml-auto mr-3 d-none d-sm-block">
 						<li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a>
 						</li>
@@ -187,38 +187,39 @@
 				</div>
 				<img src="images/author-full.jpg" class="img-fluid w-100 mb-4 rounded-lg" alt="author">
 				<div class="content">
-					<h3>Soy Matias Mancini</h3>
+					
 					<p>Tengo 20 años y vivo en Uruguay.
 						Desde la niñez me gustan los videojuegos y ello poco a poco fue alimentando
 						mi interes por la informatica hasta que de adolescente encontre la programación,
-						 y desde entonces permanentemente estoy estudiando dicha materia.
+						y desde entonces permanentemente estoy estudiando dicha materia.
 						Mis hobbies son los videojuegos y el deporte, el cual tambien hice desde muy pequeño
 						variando todo tipo de ellos como natación o artes marciales.</p>
-						<h3>Soy Matias Poses</h3>
-						<p>Tengo una edad
-							Desde la niñez me hice fan de las historieras y como los robots dominarian el mundo
-							variando artes marciales.</p>
-						<div class="quote"> <i class="ti-quote-left"></i>
-						<div>
-							<p>Life is a series of natural and spontaneous changes. Don’t resist them – that only create sorrow. Let
-								reality changes be reality. Let things flow naturally way they like.</p> <span class="quote-by"> -John
-								Doe</span>
-						</div>
-					</div>
-					<hr>
-					<h4 id="my-skills--experiences">My Skills &amp; Experiences:</h4>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-						Cumto sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-						ultricies nec.</p>
-					<ul>
-						<li>In enim justo, rhoncus ut,</li>
-						<li>Curabitur ullamcorper ultricies</li>
-						<li>Donec vitae sapien utlorem</li>
-					</ul>
-					<p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt
-						tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros
-						faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
 				</div>
+				<hr>
+				<div class="title-bordered mb-5 d-flex align-items-center">
+					<h1 class="h4">Soy Matias Poses</h1>
+					<ul class="list-inline social-icons ml-auto mr-3 d-none d-sm-block">
+						<li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a>
+						</li>
+						<li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a>
+						</li>
+						<li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a>
+						</li>
+						<li class="list-inline-item"><a href="#"><i class="ti-github"></i></a>
+						</li>
+					</ul>
+				</div>
+				<img src="images/author-full.jpg" class="img-fluid w-100 mb-4 rounded-lg" alt="author">
+				<div class="content">
+					
+					<p>Tengo 20 años y vivo en Uruguay.
+						Desde la niñez me gustan los videojuegos y ello poco a poco fue alimentando
+						mi interes por la informatica hasta que de adolescente encontre la programación,
+						y desde entonces permanentemente estoy estudiando dicha materia.
+						Mis hobbies son los videojuegos y el deporte, el cual tambien hice desde muy pequeño
+						variando todo tipo de ellos como natación o artes marciales.</p>
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -281,7 +282,8 @@
 					{% for comentario in todos_los_comentarios %}
 					<div class=" commented-section mt-4">
 						<div class="d-flex flex-row align-items-center commented-user">
-							<h5 class="mr-2"><a href="{% url 'ver_perfil' comentario.autor.id %}">{{ comentario.autor }}</a></h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{{ comentario.fecha_creacion }}</span>
+							<h5 class="mr-2"><a href="{% url 'ver_perfil' comentario.autor.id %}">{{ comentario.autor }}</a></h5><span
+								class="dot mb-1"></span><span class="mb-1 ml-2">{{ comentario.fecha_creacion }}</span>
 						</div>
 						<div class="comment-text-sm"><span> {{ comentario.contenido|safe }}</span></div>
 						<hr>
@@ -311,41 +313,42 @@
 {% if ver_perfil %}
 
 <div class="container mt-5">
-    
-	<div class="row d-flex justify-content-center">
-			
-			<div class="col-md-7">
-					
-					<div class="card mb-5 p-3 py-4">
-							
-							<div class="text-center">
-									<img src="{{ ver_perfil.imagen_perfil.url }}" width="100" class="rounded-circle">
-							</div>
-							
-							<div class="text-center mt-3">
-									
-									<h5 class="mt-2 mb-0">{{ ver_usuario.username }}</h5>
-									
-									
 
-									
-									<div class="buttons">
-											
-											<button class="btn btn-outline-primary px-4"><a href="{% url 'crear_mensaje' ver_usuario %}">Message</a></button>
-										
-									</div>
-									
-									
-							</div>
-							
-						 
-							
-							
+	<div class="row d-flex justify-content-center">
+
+		<div class="col-md-7">
+
+			<div class="card mb-5 p-3 py-4">
+
+				<div class="text-center">
+					<img src="{{ ver_perfil.imagen_perfil.url }}" width="100" class="rounded-circle">
+				</div>
+
+				<div class="text-center mt-3">
+
+					<h5 class="mt-2 mb-0">{{ ver_usuario.username }}</h5>
+
+
+
+
+					<div class="buttons">
+
+						<button class="btn btn-outline-primary px-4"><a
+								href="{% url 'crear_mensajes' ver_usuario %}">Message</a></button>
+
 					</div>
-					
+
+
+				</div>
+
+
+
+
 			</div>
-			
+
+		</div>
+
 	</div>
-	
+
 </div>
 {% endif %}

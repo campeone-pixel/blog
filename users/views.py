@@ -80,10 +80,11 @@ def editar_perfil(request):
 def cambiar_contrasenia(request):
     if request.method == "POST":
         cambio_contrasenia = form_cambio_contrasenia(request.user, request.POST)
-        if change_pass.is_valid():
+        if cambio_contrasenia.is_valid():
             cambio_contrasenia.save()
             update_session_auth_hash(request, cambio_contrasenia.user)
             messages.success(request, "Tu contrasenia ha sido modificada exitosamente")
+            return redirect("cambiar_contrasenia")
         else:
             messages.error(request, "Tu contrasenia no fue actualizada")
             return redirect("cambiar_contrasenia")

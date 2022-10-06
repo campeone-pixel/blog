@@ -67,19 +67,19 @@
           <!-- row -->
           <tr>
             <td>
-              {{ mensaje.sender }}
+              {{ mensaje.recibido_por }}
             </td>
 
             <td>
 
 
-              {{ mensaje.body }}
+              {{ mensaje.cuerpo }}
 
             </td>
 
 
             <td>{{ mensaje.fecha_creacion }}</td>
-            <td><a href="{% url 'create' mensaje.enviado_por %}">Responder</a></td>
+            <td><a href="{% url 'crear_mensajes' mensaje.enviado_por %}">Responder</a></td>
           </tr>
           {% endfor %}
 
@@ -109,13 +109,13 @@
         <!-- row -->
         <tr>
           <td>
-            {{ mensaje.receiver }}
+            {{ mensaje.enviado_por }}
           </td>
 
           <td>
 
 
-            {{ mensaje.body }}
+            {{ mensaje.cuerpo }}
 
           </td>
 
@@ -154,7 +154,7 @@
           {% csrf_token %}
           {{ p_form.as_table }}
 
-          <input type="submit" class="btn btn-success" value="Add">
+          <input type="submit" class="btn btn-success" value="Modificar">
         </form>
       </div>
     </div>
@@ -172,12 +172,12 @@
           <div class="row gx-3 mb-3">
             <!-- Form Group (first name)-->
             <div class="col-md-6">
-              <label class="small mb-1" for="inputFirstName">First name</label>
+              <label class="small mb-1" for="inputFirstName">Nombre</label>
               {{ u_form.first_name }}
             </div>
             <!-- Form Group (last name)-->
             <div class="col-md-6">
-              <label class="small mb-1" for="inputLastName">Last name</label>
+              <label class="small mb-1" for="inputLastName">Apellido</label>
               {{ u_form.last_name }}
             </div>
           </div>
@@ -185,12 +185,12 @@
 
           <!-- Form Group (email address)-->
           <div class="mb-3">
-            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+            <label class="small mb-1" for="inputEmailAddress">Email</label>
             {{ u_form.email }}
           </div>
           <!-- Form Row-->
 
-          <input type="submit" class="btn btn-success" value="Add">
+          <input type="submit" class="btn btn-success" value="Modificar">
         </form>
       </div>
     </div>
@@ -284,7 +284,7 @@
       </div>
       <!-- Form Row-->
 
-      <input type="submit" class="btn btn-success" value="Add">
+      <input type="submit" class="btn btn-success" value="Modificar">
     </form>
   </div>
   {% if messages %}

@@ -7,28 +7,19 @@
            <a class="mb-4 d-block" href="index.html">
               <img class="img-fluid" width="150px" src="{% static 'images/logo.png' %}" alt="LogBook">
            </a>
-           <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+        
         </div>
 
         <div class="col-lg-2 col-md-3 col-6 mb-4">
            <h6 class="mb-4">Quick Links</h6>
            <ul class="list-unstyled footer-list">
-              <li><a href="about.html">About</a></li>
-              <li><a href="contact.html">Contact</a></li>
-              <li><a href="privacy-policy.html">Privacy Policy</a></li>
-              <li><a href="terms-conditions.html">Terms Conditions</a></li>
+              <li><a href="{% url 'sobre_nosotros' %}">Sobre nosotros</a></li>
+              
+              <li><a href="{% url 'inicio' %}">Inicio</a></li>
+            
            </ul>
         </div>
 
-        <div class="col-lg-2 col-md-3 col-6 mb-4">
-           <h6 class="mb-4">Social Links</h6>
-           <ul class="list-unstyled footer-list">
-              <li><a href="#">facebook</a></li>
-              <li><a href="#">twitter</a></li>
-              <li><a href="#">linkedin</a></li>
-              <li><a href="#">github</a></li>
-           </ul>
-        </div>
 
         
      </div>
@@ -36,7 +27,7 @@
         <a href="javascript:void(0);" id="scrollTop"><i class="ti-angle-up"></i></a>
      </div>
      <div class="text-center">
-        <p class="content">&copy; 2020 - Design &amp; Develop By <a href="https://themefisher.com/" target="_blank">Themefisher</a></p>
+        <p class="content">&copy; Diseniado &amp; y Desarrollado por Matias Mancini y Matias Poses</p>
      </div>
   </div>
 </footer>
