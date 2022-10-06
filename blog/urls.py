@@ -12,6 +12,7 @@ urlpatterns = [
     path("users/", include("users.urls")),
     path("", inicio, name="inicio"),
     path("ver_articulo/<slug>/", ver_articulo, name="ver_articulo"),
+    path("enviar_comentario/<slug>/", enviar_comentario, name="enviar_comentario"),
     path(
         "articulos_por_categoria/<slug:slug>/",
         articulos_por_categoria,

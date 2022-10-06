@@ -29,7 +29,7 @@ def iniciar_sesion(request):
         login_form = AuthenticationForm()
         return render(request, "login.html", {"login_form": login_form})
 
-
+@login_required()
 def cerrar_sesion(request):
     logout(request)
     messages.info(request, "Cerraste sesion")
@@ -76,7 +76,7 @@ def editar_perfil(request):
     context = {"u_form": u_form, "p_form": p_form}
     return render(request, "all_profile.html", context)
 
-
+@login_required()
 def cambiar_contrasenia(request):
     if request.method == "POST":
         cambio_contrasenia = form_cambio_contrasenia(request.user, request.POST)

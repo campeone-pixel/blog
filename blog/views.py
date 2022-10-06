@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from users.models import Perfil
 from .forms import *
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
 
 def datos_sidebar():
@@ -90,36 +91,33 @@ def ver_articulo(request, slug):
     articulo = Post.objects.get(slug=slug)
 
     todos_los_comentarios = Comment.objects.filter(post=articulo)
-    if request.method == "POST":
-        form_comentario = Formulario_comentario(data=request.POST)
-        if form_comentario.is_valid():
-            form_data = form_comentario.cleaned_data
-            contenido = form_data.get("contenido")
-            nuevo_comentario = Comment.objects.create(
-                post=articulo, contenido=contenido, autor=request.user
-            )
-            nuevo_comentario.save()
-            form = Formulario_comentario()
-            return render(
-                request,
-                "home.html",
-                {"articulo": articulo, "todos_los_comentarios": todos_los_comentarios, "form": form},
-            )
-        else:
-            form = Formulario_comentario()
-            return render(
-                request,
-                "home.html",
-                {"articulo": articulo, "todos_los_comentarios": todos_los_comentarios, "form": form},
-            )
 
-    else:
-        form = Formulario_comentario()
-        return render(
-            request,
-            "home.html",
-            {"articulo": articulo, "todos_los_comentarios": todos_los_comentarios, "form": form},
+    form = Formulario_comentario()
+    return render(
+        request,
+        "home.html",
+        {
+            "articulo": articulo,
+            "todos_los_comentarios": todos_los_comentarios,
+            "form": form,
+        },
+    )
+
+@login_required()
+def enviar_comentario(request,slug):
+    articulo = Post.objects.get(slug=slug)
+    form_comentario = Formulario_comentario(data=request.POST)
+    if form_comentario.is_valid():
+        form_data = form_comentario.cleaned_data
+        contenido = form_data.get("contenido")
+        nuevo_comentario = Comment.objects.create(
+            post=articulo, contenido=contenido, autor=request.user
         )
+        nuevo_comentario.save()
+        form = Formulario_comentario()
+        return redirect("ver_articulo",articulo.slug)
+    else:
+        return redirect("ver_articulo",articulo.slug)
 
 
 def ver_perfil(request, usuario):

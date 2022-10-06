@@ -269,7 +269,7 @@
 
 
 
-				<form method="post" action="{% url 'ver_articulo' articulo.slug %}" class=" form-inline mt-1">
+				<form method="post" action="{% url 'enviar_comentario' articulo.slug %}" class=" form-inline mt-1">
 					{% csrf_token %}
 					{{ form.contenido }}
 					<button type="submit" class="btn btn-primary  btn-lg">Enviar</button>

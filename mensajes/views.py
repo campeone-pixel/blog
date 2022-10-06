@@ -5,18 +5,19 @@ from mensajes.forms import Formulario_mensaje
 from .models import Mensajes
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib.auth.decorators import login_required
 
-
+@login_required(redirect_field_name="iniciar_sesion")
 def mensajes_recibidos(request):
     inbox = Mensajes.objects.filter(recibido_por=request.user)
     return render(request, "all_profile.html", {"inbox": inbox})
 
-
+@login_required(redirect_field_name="iniciar_sesion")
 def mensajes_enviados(request):
     send = Mensajes.objects.filter(enviado_por=request.user)
     return render(request, "all_profile.html", {"send": send})
 
-
+@login_required(redirect_field_name="iniciar_sesion")
 def crear_mensajes(request, responder=None):
     if responder == None:
         if request.method == "POST":

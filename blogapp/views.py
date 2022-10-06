@@ -1,13 +1,18 @@
 from unicodedata import category
+from urllib import request
 from django.shortcuts import render
 from blogapp.models import *
 from .forms import Formulario_post
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
 
 
-@login_required(redirect_field_name="login_request")
+
+
+@login_required()
+@user_passes_test(lambda user: user.is_superuser , login_url='/')
 def ver_posts(request):
     all_posts = Post.objects.all()
     form = Formulario_post()
@@ -15,7 +20,8 @@ def ver_posts(request):
         request, "crud.html", {"all_posts": all_posts, "form": form, "ver_posts": True}
     )
 
-
+@login_required()
+@user_passes_test(lambda user: user.is_superuser , login_url='/')
 def agregar_post(request):
     if request.method == "POST":
         form = Formulario_post(request.POST, request.FILES)
@@ -34,7 +40,8 @@ def agregar_post(request):
     else:
         return redirect("ver_posts")
 
-
+@login_required()
+@user_passes_test(lambda user: user.is_superuser , login_url='/')
 def actualizar_post(request, slug):
     post = Post.objects.get(slug=slug)
     if request.method == "POST":
@@ -47,7 +54,8 @@ def actualizar_post(request, slug):
         update_form = Formulario_post(instance=post)
         return render(request, "crud.html", {"update_form": update_form, "post": post})
 
-
+@login_required()
+@user_passes_test(lambda user: user.is_superuser , login_url='/')
 def borrar_post(request, slug):
     post_delete = Post.objects.get(slug=slug)
     if request.method == "POST":
@@ -56,7 +64,8 @@ def borrar_post(request, slug):
     else:
         return render(request, "crud.html", {"post_delete": post_delete})
 
-
+@login_required()
+@user_passes_test(lambda user: user.is_superuser , login_url='/')
 def buscar_posts(request):
     if request.method == "GET":
         busqueda = request.GET.get("s")
