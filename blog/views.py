@@ -10,9 +10,19 @@ from django.contrib.auth.decorators import login_required
 
 
 def datos_sidebar():
-    ultimos_posteos = Post.objects.order_by("fecha_creacion")[0:3]
-    tags = Tag.objects.all()
-    categorias = Category.objects.all().annotate(posts_count=Count("posts"))
+    ultimos_posteos = Post.objects.order_by("fecha_creacion").order_by(
+        "-fecha_creacion",
+    )[0:3]
+    tags = Tag.objects.all().order_by(
+        "-fecha_creacion",
+    )
+    categorias = (
+        Category.objects.all()
+        .annotate(posts_count=Count("posts"))
+        .order_by(
+            "-fecha_creacion",
+        )
+    )
     inicio = "inicio"
     return {
         "ultimos_posteos": ultimos_posteos,
@@ -28,15 +38,33 @@ def datos_sidebar():
 
 
 def inicio(request):
-    todos_los_posts = Post.objects.all()
-    contexto = {"todos_los_posts": todos_los_posts}
-    contexto.update(datos_sidebar())
-    return render(request, "home.html", contexto)
+    todos_los_posts = Post.objects.all().order_by(
+        "-fecha_creacion",
+    )
+
+  
+    if todos_los_posts.count() == 0:
+        mensajes = "No hay articulos para mostrar"
+        contexto = {
+            "todos_los_posts": todos_los_posts,
+            "mensajes": mensajes,
+        }
+        contexto.update(datos_sidebar())
+        return render(request, "home.html", contexto)
+    else:
+        contexto = {"todos_los_posts": todos_los_posts}
+        contexto.update(datos_sidebar())
+        return render(request, "home.html", contexto)
+  
 
 
 def articulos_por_categoria(request, slug):
     categoria_a_filtrar = Category.objects.get(slug=slug)
-    articulos_por_categoria = Post.objects.filter(categoria=categoria_a_filtrar)
+    articulos_por_categoria = Post.objects.filter(
+        categoria=categoria_a_filtrar
+    ).order_by(
+        "-fecha_creacion",
+    )
     if articulos_por_categoria.count() == 0:
         mensajes = "No hay articulos correspondiente a la categoria seleccionada"
         contexto = {
@@ -55,7 +83,9 @@ def articulos_por_categoria(request, slug):
 
 def articulos_por_tag(request, slug):
     tag_a_filtrar = Tag.objects.get(slug=slug)
-    articulos_por_tag = Post.objects.filter(tag=tag_a_filtrar)
+    articulos_por_tag = Post.objects.filter(tag=tag_a_filtrar).order_by(
+        "-fecha_creacion",
+    )
     if articulos_por_tag.count() == 0:
         mensajes = "No hay articulos correspondiente con el tag seleccionado"
         contexto = {"articulos_por_tag": articulos_por_tag, "mensajes": mensajes}
@@ -72,7 +102,9 @@ def articulos_por_tag(request, slug):
 def articulos_buscados(request):
     if request.method == "GET":
         busqueda = request.GET.get("s")
-        articulos_buscados = Post.objects.filter(titulo__icontains=busqueda)
+        articulos_buscados = Post.objects.filter(titulo__icontains=busqueda).order_by(
+            "-fecha_creacion",
+        )
         contexto = datos_sidebar()
         if articulos_buscados.count() != 0:
             contexto["articulos_buscados"] = articulos_buscados
@@ -103,8 +135,9 @@ def ver_articulo(request, slug):
         },
     )
 
+
 @login_required()
-def enviar_comentario(request,slug):
+def enviar_comentario(request, slug):
     articulo = Post.objects.get(slug=slug)
     form_comentario = Formulario_comentario(data=request.POST)
     if form_comentario.is_valid():
@@ -115,9 +148,9 @@ def enviar_comentario(request,slug):
         )
         nuevo_comentario.save()
         form = Formulario_comentario()
-        return redirect("ver_articulo",articulo.slug)
+        return redirect("ver_articulo", articulo.slug)
     else:
-        return redirect("ver_articulo",articulo.slug)
+        return redirect("ver_articulo", articulo.slug)
 
 
 def ver_perfil(request, usuario):
