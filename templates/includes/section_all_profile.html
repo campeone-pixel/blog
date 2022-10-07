@@ -62,7 +62,16 @@
 
 
       <table class="table">
+        <tr>
+          <th>DE:</th>
+          <th>CUERPO</th>
+          <th>FECHA</th>
+          <th>ACCION</th>
+        </tr>
         <tbody>
+      
+
+
           {% for mensaje in inbox %}
           <!-- row -->
           <tr>
@@ -104,12 +113,18 @@
 
 
     <table class="table">
+      <tr>
+        <th>A:</th>
+        <th>CUERPO</th>
+        <th>FECHA</th>
+      
+      </tr>
       <tbody>
         {% for mensaje in send %}
         <!-- row -->
         <tr>
           <td>
-            {{ mensaje.enviado_por }}
+            {{ mensaje.recibido_por }}
           </td>
 
           <td>
@@ -160,7 +175,7 @@
     </div>
   </div>
 
-  <div class="col-xl-12 ">
+  <div class="col-xl-12 mt-4 ">
 
     <div class="card mb-4">
       <div class="card-header">Cambiar Datos</div>
