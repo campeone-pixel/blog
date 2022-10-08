@@ -1,5 +1,5 @@
 # Proyecto de BLOG para Coderhouse
-#blog
+# blog
 Equipo de trabajo:
 
 * Matias Mancini
