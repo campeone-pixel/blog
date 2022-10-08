@@ -48,8 +48,8 @@ Las posibles paginas accesibles son la del chat entre usuarios para el cual se p
 Mapa del sitio si no se inicia sesion:
 
 Mapa del sitio si se inicia sesion:
+<img src="blog/static/images/mapa_iniciado.jpg">
 
-![Alt text](blog/static/images/mapa_iniciado.jpg?raw=true "mapa")
 
 [Back to the top](#proyecto-de-blog-para-coderhouse)
 
