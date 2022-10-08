@@ -13,22 +13,21 @@
           <div class="col-sm-4">
             <h2>Organizar <b>Posts</b></h2>
           </div>
-          
-          
-            <form action="{% url 'search_posts' %}" method='GET' class="">
-              <input  name="s" type="search" class="search-box-crud widget-search">
-              <button type="submit" class="btn btn-success "><i ></i> <span>Buscar Post</span></button>
-            </form>
-            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i
-                class="material-icons">&#xE147;</i> <span>Agregar nuevo post</span></a>
 
-          
+
+          <form action="{% url 'buscar_posts' %}" method='GET' class="">
+            <input name="s" type="search" class="search-box-crud widget-search">
+            <a type="submit" class="btn btn-success " style="height: 100%;"> <span>Buscar Post</span></a>
+          </form>
+          <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"> <span>Agregar nuevo post</span></a>
+
+
         </div>
       </div>
       <table class="table table-striped table-hover">
         <thead>
           <tr>
-            
+
             <th>Titulo</th>
 
             <th>Accion</th>
@@ -38,40 +37,39 @@
 
           {% for post in all_posts %}
           <tr>
-            
+
             <td>{{ post.titulo }}</td>
 
 
             <td>
-              <a href="{% url 'update_post' post.slug %}"><i class="material-icons" data-toggle="tooltip"
+              <a href="{% url 'actualizar_post' post.slug %}"><i class="material-icons" data-toggle="tooltip"
                   title="Edit">&#xE254;</i></a>
-              <a href="{% url 'delete_post' post.slug %}"><i class="material-icons"
-                  data-toggle="tooltip" title="Delete">&#xE872;</i></a>   
-              <a href="{{ post.get_absolute_url }}"><i class="material-icons"
-                    data-toggle="tooltip" title="Delete">&#xe8f4;</i></a>
+              <a href="{% url 'borrar_post' post.slug %}"><i class="material-icons" data-toggle="tooltip"
+                  title="Delete">&#xE872;</i></a>
+              <a href="{{ post.get_absolute_url }}"><i class="material-icons" data-toggle="tooltip"
+                  title="Delete">&#xe8f4;</i></a>
             </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
-
-      {% if paginas %}
-      <div class="clearfix">
+      <!-- <div class="clearfix">
         <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
         <ul class="pagination">
-
-          <li class="page-item disabled"><a href="#">Previous</a></li>
-          {% for pagina in paginas %}
+          <li class="mr-2"><a href="#" >Anterior</a></li>
           <li class="page-item"><a href="#" class="page-link">1</a></li>
-
-          {% endfor %}
-          <li class="page-item"><a href="#" class="page-link">Next</a></li>
-
+          <li class="page-item"><a href="#" class="page-link">2</a></li>
+          <li class="page-item active"><a href="#" class="page-link">3</a></li>
+          <li class="page-item"><a href="#" class="page-link">4</a></li>
+          <li class="page-item"><a href="#" class="page-link">5</a></li>
+          <li ><a href="#" >Posterior</a></li>
         </ul>
       </div>
-      {% endif %}
-    </div>
+     -->
+
+
   </div>
+</div>
 </div>
 
 
@@ -84,7 +82,7 @@
 
         <div class="modal-header">
           <h4 class="modal-title">Add Employee</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
         </div>
         <div class="modal-body">
           <div class="form-group">
@@ -107,7 +105,7 @@
 
           </div>
           <div class="custom-file">
-{{form.imagen_post|add_class:"custom-file-input"|attr:"type:file"|attr:"id:customFile"|attr:'name:imagen_post'|attr:'accept:image/*'|attr:'id:id_imagen_post'}}
+            {{form.imagen_post|add_class:"custom-file-input"|attr:"type:file"|attr:"id:customFile"|attr:'name:imagen_post'|attr:'accept:image/*'|attr:'id:id_imagen_post'}}
             <label class="custom-file-label" for="customFile">Choose file</label>
           </div>
           <div class="form-group">
@@ -129,13 +127,15 @@
 
         </div>
         <div class="modal-footer">
-          
-          <input type="submit" class="btn btn-success" value="Add">
+
+          <input type="submit" class="btn btn-success" value="Agregar">
         </div>
       </form>
     </div>
   </div>
 </div>
+
+
 
 {% endif %}
 
@@ -144,7 +144,7 @@
 <div class="container-xl">
   <div class="table-responsive">
     <div class="table-wrapper">
-      <form action="{% url 'update_post' post.slug %}" method="POST" enctype="multipart/form-data">
+      <form action="{% url 'actualizar_post' post.slug %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
 
@@ -170,12 +170,12 @@
         </div>
         <div class="custom-file">
           <label class="custom-file-label" for="customFile">Choose file</label>
-          
+
           {{update_form.imagen_post|add_class:"custom-file-input"|attr:"type:file"|attr:"id:customFile"|attr:'name:imagen_post'|attr:'accept:image/*'|attr:'id:id_imagen_post'}}
-          
+
         </div>
         <div class="form-group">
-          
+
           {{ update_form.publicar }}
           <label>Publicar?</label>
         </div>
@@ -192,7 +192,7 @@
           {{ update_form.tag }}
         </div>
         <div class="modal-footer">
-        
+
           <input type="submit" class="btn btn-success" value="Add">
         </div>
 
@@ -212,15 +212,16 @@
 
   <br><br>
   <div class="alert alert-danger" role="alert">
-      Estas seguro que quieres eliminar  "{{ employee.emp_name }}"?
+    Estas seguro que quieres eliminar "{{ employee.emp_name }}"?
   </div>
-  
+
   <p>
-      <a href="{% url 'ver_posts' %}"> <-- Go back</a>
+    <a href="{% url 'ver_posts' %}">
+      <-- Go back</a>
   </p>
 
   <p>
-      <input class="btn btn-danger" type="submit" value="Confirm">
+    <input class="btn btn-danger" type="submit" value="Confirm">
   </p>
 </form>
 {% endif %}

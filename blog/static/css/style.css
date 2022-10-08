@@ -19,7 +19,8 @@ body {
   line-height: 1.7;
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
-  color: #696c6d;
+  background-color: #f2f6fc;
+  color: #69707a;
   font-size: 14px;
 }
 

@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load i18n %}
 {% if inicio %}
 <section class="section">
 	<div class="container">
@@ -7,8 +7,8 @@
 			<div class="col-lg-8  mb-5 mb-lg-0">
 
 
-				{% if all_posts %}
-				{% for articulo in all_posts %}
+				{% if todos_los_posts %}
+				{% for articulo in todos_los_posts %}
 				<article class="row mb-5">
 					<div class="col-12">
 						<div class="post-slider">
@@ -20,12 +20,14 @@
 						<h3><a class="post-title" href="{% url 'ver_articulo' articulo.slug  %}">{{ articulo.titulo }}</a></h3>
 						<ul class="list-inline post-meta mb-4">
 							<li class="list-inline-item"><i class="ti-user mr-2"></i>
+								{% language 'es' %}
 								<a href="#">{{ articulo.fecha_creacion }}</a>
+								{% endlanguage %}
 							</li>
 							<li class="list-inline-item">{{ articulo.escritor }}</li>
-							<li class="list-inline-item">Categories : <a href="#!" class="ml-1">{{ articulo.categoria }}</a>
+							<li class="list-inline-item">Categorias : <a href="#!" class="ml-1">{{ articulo.categoria }}</a>
 							</li>
-							<li class="list-inline-item">Tags :
+							<li class="list-inline-item">Etiquetas :
 								{% for tag in articulo.tag.all %}
 								<a href="#!" class="ml-1"> {{ tag }} </a>
 								{% endfor %}
@@ -73,6 +75,9 @@
 
 				{% if articulos_por_categoria %}
 				{% for articulo in articulos_por_categoria %}
+
+
+
 				<article class="row mb-5">
 					<div class="col-12">
 						<div class="post-slider">
@@ -138,12 +143,12 @@
 
 
 
-				{% if message %}
+				{% if mensajes %}
 
 				<article class="row mb-5">
 
 					<div class="col-12 mx-auto">
-						<h3><a class="post-title" href="#">{{ message }}</a></h3>
+						<h3><a class="post-title" href="#">{{ mensajes }}</a></h3>
 					</div>
 				</article>
 
@@ -170,7 +175,7 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="title-bordered mb-5 d-flex align-items-center">
-					<h1 class="h4">Buenas! Nosotros somos...</h1>
+					<h1 class="h4">Soy Matias Mancini.</h1>
 					<ul class="list-inline social-icons ml-auto mr-3 d-none d-sm-block">
 						<li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a>
 						</li>
@@ -184,38 +189,32 @@
 				</div>
 				<img src="images/author-full.jpg" class="img-fluid w-100 mb-4 rounded-lg" alt="author">
 				<div class="content">
-					<h3>Soy Matias Mancini</h3>
+
 					<p>Tengo 20 años y vivo en Uruguay.
 						Desde la niñez me gustan los videojuegos y ello poco a poco fue alimentando
 						mi interes por la informatica hasta que de adolescente encontre la programación,
-						 y desde entonces permanentemente estoy estudiando dicha materia.
+						y desde entonces permanentemente estoy estudiando dicha materia.
 						Mis hobbies son los videojuegos y el deporte, el cual tambien hice desde muy pequeño
 						variando todo tipo de ellos como natación o artes marciales.</p>
-						<h3>Soy Matias Poses</h3>
-						<p>Tengo una edad
-							Desde la niñez me hice fan de las historieras y como los robots dominarian el mundo
-							variando artes marciales.</p>
-						<div class="quote"> <i class="ti-quote-left"></i>
-						<div>
-							<p>Life is a series of natural and spontaneous changes. Don’t resist them – that only create sorrow. Let
-								reality changes be reality. Let things flow naturally way they like.</p> <span class="quote-by"> -John
-								Doe</span>
-						</div>
-					</div>
-					<hr>
-					<h4 id="my-skills--experiences">My Skills &amp; Experiences:</h4>
-					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
-						Cumto sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-						ultricies nec.</p>
-					<ul>
-						<li>In enim justo, rhoncus ut,</li>
-						<li>Curabitur ullamcorper ultricies</li>
-						<li>Donec vitae sapien utlorem</li>
-					</ul>
-					<p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt
-						tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros
-						faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
 				</div>
+				<hr>
+				<div class="title-bordered mb-5 d-flex align-items-center">
+					<h1 class="h4">Soy Matias Poses</h1>
+					<ul class="list-inline social-icons ml-auto mr-3 d-none d-sm-block">
+
+						<li class="list-inline-item"><a href="https://ar.linkedin.com/in/matias-poses-4748aa130/en?trk=people-guest_people_search-card"><i class="ti-linkedin"></i></a>
+						</li>
+						<li class="list-inline-item"><a href="https://github.com/campeone-pixel"><i class="ti-github"></i></a>
+						</li>
+					</ul>
+				</div>
+				<img src="{% static 'images/matias_poses.jpg' %}" class="img-fluid w-100 mb-4 rounded-lg" alt="author" >
+				<div class="content">
+
+					<p> Tengo 35 anios y soy de  Rosario, Argentina. Empece hace poco tiempo a estudiar Programacion. Comenze con Python pero tambien estudio Javascript, SQL, HTML y CSS. <br>
+					A pesar de que no me dedico a la programacion, vi que lo podia aplicar en mi trabajo para poder facilitar las labores diarias. Tambien me gustaria dedicarme FULLTIME a la programacion ya que me apasiona mucho. Creo que es un trabajo muy gratificante y en el que siempre hay cosas nuevas para aprender.  </p>
+				</div>
+
 			</div>
 		</div>
 	</div>
@@ -265,7 +264,7 @@
 
 
 
-				<form method="post" action="{% url 'ver_articulo' articulo.slug %}" class=" form-inline mt-1">
+				<form method="post" action="{% url 'enviar_comentario' articulo.slug %}" class=" form-inline mt-1">
 					{% csrf_token %}
 					{{ form.contenido }}
 					<button type="submit" class="btn btn-primary  btn-lg">Enviar</button>
@@ -275,12 +274,13 @@
 
 
 				<div>
-					{% for comment in all_comments %}
+					{% for comentario in todos_los_comentarios %}
 					<div class=" commented-section mt-4">
 						<div class="d-flex flex-row align-items-center commented-user">
-							<h5 class="mr-2">{{ comment.autor }}</h5><span class="dot mb-1"></span><span class="mb-1 ml-2">{{ comment.fecha_creacion }}</span>
+							<h5 class="mr-2"><a href="{% url 'ver_perfil' comentario.autor.id %}">{{ comentario.autor }}</a></h5><span
+								class="dot mb-1"></span><span class="mb-1 ml-2">{{ comentario.fecha_creacion }}</span>
 						</div>
-						<div class="comment-text-sm"><span> {{ comment.contenido|safe }}</span></div>
+						<div class="comment-text-sm"><span> {{ comentario.contenido|safe }}</span></div>
 						<hr>
 						{% endfor %}
 
@@ -300,4 +300,50 @@
 	</div>
 </section>
 
+{% endif %}
+
+
+
+
+{% if ver_perfil %}
+
+<div class="container mt-5">
+
+	<div class="row d-flex justify-content-center">
+
+		<div class="col-md-7">
+
+			<div class="card mb-5 p-3 py-4">
+
+				<div class="text-center">
+					<img src="{{ ver_perfil.imagen_perfil.url }}" width="100" class="rounded-circle">
+				</div>
+
+				<div class="text-center mt-3">
+
+					<h5 class="mt-2 mb-0">{{ ver_usuario.username }}</h5>
+
+
+
+
+					<div class="buttons">
+
+						<button class="btn btn-outline-primary px-4"><a
+								href="{% url 'crear_mensajes' ver_usuario %}">Message</a></button>
+
+					</div>
+
+
+				</div>
+
+
+
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
 {% endif %}
