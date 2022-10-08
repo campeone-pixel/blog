@@ -1,5 +1,15 @@
 # Proyecto de BLOG para Coderhouse
-# blog
+
+###Contenido
+Se muestran las secciones del contenido
+
+- [Descripcion](#descripcion)
+- [División de trabajos](https://github.com/EMME-ESSE)
+- [Video del blog](https://github.com/EMME-ESSE)
+- [Estructura del proyecto](https://github.com/EMME-ESSE)
+- [Mapa del sitio](https://github.com/EMME-ESSE)
+- [Dependencias](#dependencias-necesarias)
+
 Equipo de trabajo:
 
 * Matias Mancini
