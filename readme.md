@@ -19,17 +19,17 @@ Se muestran las secciones del contenido
 - [Dependencias](#dependencias-necesarias)
 
 
-## Descripcion
+## Descripción
 
 Realizamos un BLOG para el curso de Python de Coderhouse. En este BLOG se pueden leer noticias actuales, se pueden comentar los diferentes articulos y enviar mensajes entre los usuarios. Solo los superusuarios pueden agregar, editar y borrar los posts.
 
 [Back to the top](#proyecto-de-blog-para-coderhouse)
 
-## Division de trabajos
+## División de trabajos
 
-Matias Poses: Estructura principal del proyecto junto al debugging del mismo y Estilizacion de - las paginas con su correspondiente html.
+Matias Poses: Estructura principal del proyecto junto al debugging del mismo y Estilizacion de  las paginas con su correspondiente html.
 
-Matias Mancini: Programacion de las paginas, y documentacion del proyecto.
+Matias Mancini: Programación de las paginas, y documentacion del proyecto.
 
 [Back to the top](#proyecto-de-blog-para-coderhouse)
 
