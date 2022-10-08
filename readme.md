@@ -11,6 +11,9 @@ Realizamos un BLOG para el curso de Python de Coderhouse. En este BLOG se pueden
 
 ## Division de trabajos
 
+Matias Poses: Estructura principal del proyecto junto al debugging del mismo y Estilizacion de las paginas con su correspondiente html.
+
+Matias Mancini: Programacion de las paginas, y documentacion del proyecto.
 
 ## Video del BLOG
 
@@ -20,6 +23,7 @@ Realizamos un BLOG para el curso de Python de Coderhouse. En este BLOG se pueden
 
 ## Mapa del Sitio
 
+Pagina principal, chat, inicio de sesion, registro de sesion.
 
 ## Dependencias necesarias
 
