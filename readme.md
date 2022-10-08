@@ -21,7 +21,8 @@ Equipo de trabajo:
 
 ## Descripción
 
-Realizamos un BLOG para el curso de Python de Coderhouse. En este BLOG se pueden leer noticias actuales, se pueden comentar los diferentes articulos y enviar mensajes entre los usuarios. Solo los superusuarios pueden agregar, editar y borrar los posts.
+BLOG realizado para el curso de Python de Coderhouse. 
+En este BLOG se pueden leer noticias actuales, comentar los diferentes articulos y enviar mensajes entre los usuarios. Solo los superusuarios pueden agregar, editar y borrar los posts.
 
 [Back to the top](#proyecto-de-blog-para-coderhouse)
 
