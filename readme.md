@@ -28,9 +28,9 @@ En este BLOG se pueden leer noticias actuales, comentar los diferentes articulos
 
 ## División de trabajos
 
-Matias Poses: Estructura principal del proyecto junto al debugging del mismo y Estilizacion de  las paginas con su correspondiente html.
+Matias Poses: Estructura de la pagina de inicio, el CRUD y Estilizacion de  las paginas con su correspondiente html.
 
-Matias Mancini: Programación de las paginas, y documentacion del proyecto.
+Matias Mancini: Estructura del registro de usuario como tambien la autenticacion, los cambios de datos de perfil y mensajerias.
 
 [Back to the top](#proyecto-de-blog-para-coderhouse)
 
@@ -43,10 +43,10 @@ Matias Mancini: Programación de las paginas, y documentacion del proyecto.
 ## Mapa del Sitio
 
 En la pagina principal se muestran los enlaces a las demas junto con un cambio en las opciones que dependen del si esta logueado el usuario o no.
-Las posibles paginas accesibles son la del chat entre usuarios para el cual se precisa estar registrado y logueado, un registro e inicio de sesion y una pagina dedicada a los desarrolladores para conocer sobre ellos.
+Las posibles paginas accesibles son la de la mensajeria entre usuarios para el cual se precisa estar registrado y logueado, un registro e inicio de sesion y una pagina dedicada a los desarrolladores para conocer sobre ellos.
 
 Mapa del sitio si no se inicia sesion:
-
+<img src="blog/static/images/mapa_sin_iniciar.png">
 Mapa del sitio si se inicia sesion:
 <img src="blog/static/images/mapa_iniciado.png">
 
