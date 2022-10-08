@@ -3,7 +3,7 @@
 Equipo de trabajo:
 
 * Matias Mancini
-* [@EMME-ESSE](https://github.com/EMME-ESSE)
+[@EMME-ESSE](https://github.com/EMME-ESSE)
 * Matias Poses 
 [@campeone-pixel](https://github.com/campeone-pixel)
 
