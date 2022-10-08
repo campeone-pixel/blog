@@ -54,25 +54,10 @@ Mapa del sitio si se inicia sesion:
 [Back to the top](#proyecto-de-blog-para-coderhouse)
 
 ## Dependencias necesarias
-* asgiref==3.5.2
-* Django==4.1.1
-* django-appconf==1.0.5
-* django-ckeditor==6.5.1
-* django-crispy-forms==1.14.0
-* django-debug-toolbar==3.6.0
-* django-imagekit==4.1.0
-* django-js-asset==2.0.0
-* django-widget-tweaks==1.4.12
-* mypy-extensions==0.4.3
-* pathspec==0.10.1
-* pilkit==2.0
-* Pillow==9.2.0
-* platformdirs==2.5.2
-* six==1.16.0
-* sqlparse==0.4.2
-* tomli==2.0.1
-* tzdata==2022.2
 
+````
+pip install -r requirements.txt 
+````
 
 [Back to the top](#proyecto-de-blog-para-coderhouse)
 ##  

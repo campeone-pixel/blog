@@ -83,11 +83,11 @@ def cambiar_contrasenia(request):
         if cambio_contrasenia.is_valid():
             cambio_contrasenia.save()
             update_session_auth_hash(request, cambio_contrasenia.user)
-            messages.success(request, "Tu contrasenia ha sido modificada exitosamente")
-            return redirect("cambiar_contrasenia")
+            messages.success(request, "Tu contraseña ha sido modificada exitosamente")
+            return redirect("cambiar_contraseña")
         else:
-            messages.error(request, "Tu contrasenia no fue actualizada")
-            return redirect("cambiar_contrasenia")
+            messages.error(request, "Tu contraseña no fue actualizada")
+            return redirect("cambiar_contraseña")
     else:
         change_pass = form_cambio_contrasenia(request.user)
         return render(request, "all_profile.html", {"change_pass": change_pass})
