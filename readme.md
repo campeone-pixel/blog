@@ -2,9 +2,9 @@
 
 Equipo de trabajo:
 
-* Matias Mancini
+ Matias Mancini
 - GitHub - [@EMME-ESSE](https://github.com/EMME-ESSE)
-* Matias Poses 
+ Matias Poses 
 - GitHub - [@campeone-pixel](https://github.com/campeone-pixel)
 
 ## Descripcion
