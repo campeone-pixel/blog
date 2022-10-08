@@ -9,7 +9,7 @@ Equipo de trabajo:
 
 
 ### Contenido
-Se muestran las secciones del contenido
+> Se muestran las secciones del contenido
 
 - [Descripcion](#descripcion)
 - [División de trabajos](#división-de-trabajos)
