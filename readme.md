@@ -5,7 +5,7 @@ Equipo de trabajo:
 * Matias Mancini
 - GitHub - [@EMME-ESSE](https://github.com/EMME-ESSE)
 * Matias Poses 
-- GitHub - [@EMME-ESSE](https://github.com/campeone-pixel)
+- GitHub - [@campeone-pixel](https://github.com/campeone-pixel)
 
 ## Descripcion
 
