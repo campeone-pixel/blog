@@ -37,7 +37,7 @@ Matias Mancini: Estructura del registro de usuario como tambien la autenticacion
 ## Video del BLOG
 
 [Back to the top](#proyecto-de-blog-para-coderhouse)
-## Estructura del projecto
+## Estructura del proyecto
 
 * Carpeta blog del proyecto<br>
   Contiene las views para renderizar el inicio con todos sus posts
@@ -51,7 +51,7 @@ Matias Mancini: Estructura del registro de usuario como tambien la autenticacion
 * Carpeta template <br>
   Se crearon templates bases y se creo una carpeta include donde se separo los contenidos de cada pagina separandolo en sidebar, secciones principales, navbar, footer
 
-El proyecto se dividio en tres app diferentes. Estas son:
+  El proyecto se dividio en tres app diferentes. Estas son:
 * Mensajes
   - Modelo Mensajes
   - Las views para crear, ver mensajes
