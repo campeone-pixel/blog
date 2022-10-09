@@ -7,15 +7,20 @@ from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 
+
 @login_required(redirect_field_name="iniciar_sesion")
 def mensajes_recibidos(request):
-    inbox = Mensajes.objects.filter(recibido_por=request.user)
+    inbox = Mensajes.objects.filter(recibido_por=request.user).order_by(
+        "-fecha_creacion"
+    )
     return render(request, "all_profile.html", {"inbox": inbox})
+
 
 @login_required(redirect_field_name="iniciar_sesion")
 def mensajes_enviados(request):
-    send = Mensajes.objects.filter(enviado_por=request.user)
+    send = Mensajes.objects.filter(enviado_por=request.user).order_by("-fecha_creacion")
     return render(request, "all_profile.html", {"send": send})
+
 
 @login_required(redirect_field_name="iniciar_sesion")
 def crear_mensajes(request, responder=None):

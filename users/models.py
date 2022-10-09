@@ -7,7 +7,7 @@ from imagekit.processors import ResizeToFill
 class Perfil(models.Model):
     usuario = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    imagen = models.ImageField(default="default.jpg", upload_to="profile_pics/")
+    imagen = models.ImageField(default="profile_pics/default.jpg", upload_to="profile_pics/")
     imagen_pequenia = ImageSpecField(
         source="imagen",
         processors=[ResizeToFill(50, 50)],
