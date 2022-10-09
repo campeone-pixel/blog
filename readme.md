@@ -38,6 +38,37 @@ Matias Mancini: Estructura del registro de usuario como tambien la autenticacion
 
 [Back to the top](#proyecto-de-blog-para-coderhouse)
 ## Estructura del projecto
+
+* Carpeta blog del proyecto
+- Contiene las views para renderizar el inicio con todos sus posts
+
+* Static Folder
+Se creo usando el comando collectstatic
+
+* Carpeta media
+En esta carpeta se suben todos las imagenes de post como tambien las imagenes de perfil de cada usuario.
+
+* Carpeta template
+Se crearon templates bases y se creo una carpeta include donde se separo los contenidos de cada pagina separandolo en sidebar, secciones principales, navbar, footer
+
+El proyecto se dividio en tres app diferentes. Estas son:
+* Mensajes
+  - Modelo Mensajes
+  - Las views para crear, ver mensajes
+  - Formularios para crear mensajes
+
+* Users
+
+- Modelo Perfil
+- Views para iniciar sesion, registrarse, cerrar sesion y editar perfil
+
+
+* Blogapp
+- Modelos categorias, tag, escritor, post y comentarios
+- Views agregar post, actualizar post, ver post, buscar post
+- Formularios comentarios y post
+
+
 [Back to the top](#proyecto-de-blog-para-coderhouse)
 
 ## Mapa del Sitio
