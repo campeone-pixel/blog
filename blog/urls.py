@@ -21,7 +21,7 @@ urlpatterns = [
     path("articulos_por_tag/<slug:slug>/", articulos_por_tag, name="articulos_por_tag"),
     path("articulos_buscados/", articulos_buscados, name="articulos_buscados"),
     path("sobre_nosotros/", sobre_nosotros, name="sobre_nosotros"),
-    path('__debug__/', include('debug_toolbar.urls')),
+    
     path("ver_perfil/<usuario>", ver_perfil, name="ver_perfil"),
   
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
