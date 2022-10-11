@@ -36,6 +36,8 @@ Matias Mancini: Estructura del registro de usuario como tambien la autenticacion
 
 ## Video del BLOG
 
+https://www.youtube.com/watch?v=IzJz04zUtfU&ab_channel=matiasmancini
+
 [Back to the top](#proyecto-de-blog-para-coderhouse)
 ## Estructura del proyecto
 
